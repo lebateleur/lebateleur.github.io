@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Dependencies
 markdown:         kramdown
 highlighter:      rouge
@@ -36,4 +35,3 @@ sidebar_home_link:  true
                                 # to enable a separate blog link.
 =======
 theme: jekyll-theme-leap-day
->>>>>>> c7c9fc89c3a04ccefd252ff169e1c6c6b541e552
