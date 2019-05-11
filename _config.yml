@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 markdown:         kramdown
 highlighter:      rouge
@@ -33,3 +34,6 @@ sidebar_home_link:  true
                                 # page. If you change your paginate_path,
                                 # set this to the root of the paginate_path
                                 # to enable a separate blog link.
+=======
+theme: jekyll-theme-leap-day
+>>>>>>> c7c9fc89c3a04ccefd252ff169e1c6c6b541e552
