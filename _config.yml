@@ -7,7 +7,8 @@ baseurl: ''
 author:
   name: Robin Piedeleu
 email: robin.piedeleu@gmail.com
-twitter_username: rwolffoot
+twitter: rwolffoot
+
 paginate: 5
 paginate_path: '/blog/page:num'
 plugins:
@@ -15,4 +16,3 @@ plugins:
   - jekyll-gist
   - jekyll-paginate
 sidebar_home_link: true
-
