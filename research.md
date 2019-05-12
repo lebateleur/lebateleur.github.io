@@ -5,5 +5,5 @@ sidebar_link: true
 ---
 
 <p class="message">
-Thhis page is under construction. My research and publications coming soon.
+This page is under construction. List of publications coming soon.
 </p>

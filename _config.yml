@@ -1,35 +1,17 @@
-# Dependencies
-markdown:         kramdown
-highlighter:      rouge
-
-# Setup
-title:            Robin Piedeleu
-tagline:          'A Jekyll theme'
-description:      'Postdoctoral Researcher in Computer Science at UCL'
-url:              piedeleu.com
-baseurl:          ''
-                  # the optional subpath of your site, e.g. "/blog"
-                  # NB: This applies to all pages in your Jekyll site.
-                  # If you want to move just the blog index pages but keep
-                  # other pages at root, see the paginate_path and
-                  # sidebar_blog_link below.
-
+markdown: kramdown
+highlighter: rouge
+title: Robin Piedeleu
+description: Postdoctoral Researcher in Computer Science at UCL
+url: piedeleu.com
+baseurl: ''
 author:
-  name:           'Robin Piedeleu'
-
-paginate:         5
-paginate_path:    '/blog/page:num'
-                    # Or '/blog/page:num' if you want to move your index pages
-
+  name: Robin Piedeleu
+email: robin.piedeleu@gmail.com
+twitter_username: rwolffoot
+paginate: 5
+paginate_path: '/blog/page:num'
 plugins:
   - jekyll-feed
   - jekyll-gist
   - jekyll-paginate
-
-# Sidebar link settings
-sidebar_home_link:  true
-# sidebar_blog_link:  '/blog'   # By default, your home page is your blog
-                                # page. If you change your paginate_path,
-                                # set this to the root of the paginate_path
-                                # to enable a separate blog link.
-
+sidebar_home_link: true
