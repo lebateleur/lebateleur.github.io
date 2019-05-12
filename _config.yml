@@ -15,3 +15,4 @@ plugins:
   - jekyll-gist
   - jekyll-paginate
 sidebar_home_link: true
+
