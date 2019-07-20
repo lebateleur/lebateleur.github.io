@@ -5,12 +5,16 @@ sidebar_link: true
 ---
 
 
-<p class="message">
-Click on the titles to see the abstract.
-</p>
-
 
 ## 2019
+
+<ul>
+<details><summary><strong>Bialgebraic Semantics for String Diagrams</strong></summary><p>Turi and Plotkin's bialgebraic semantics is an abstract approach to specifying the operational semantics of a system, by means of a distributive law between its syntax (encoded as a monad) and its dynamics (an endofunctor). This setup is instrumental in showing that a semantic specification (a coalgebra) satisfies desirable properties: in particular, that it is compositional. 
+
+In this work, we use the bialgebraic approach to derive well-behaved structural operational semantics of <em>string diagrams</em>, a graphical syntax that is increasingly used in the study of interacting systems across different disciplines. Our analysis relies on representing the two-dimensional operations underlying string diagrams in various categories as a monad, and their bialgebraic semantics in terms of a distributive law for that monad. </p>
+</details><em>with Filippo Bonchi, Paweł Sobociński and Fabio Zanasi,&nbsp; </em><em><a href="https://event.cwi.nl/concur2019/">CONCUR'19</a>. <br /></em><em><a href="publications/BPSZ-concur19.pdf">PDF</a> </em>
+</ul>
+
 <ul>
 <details><summary><strong>Graphical Affine Algebra</strong></summary><p>Graphical linear algebra is a diagrammatic language allowing to reason compositionally about different types of linear computing devices. In this paper, we extend this formalism with a connector for <em>affine</em> behaviour. The extension, which we call graphical affine algebra, is simple but remarkably powerful: it can model systems with richer patterns of behaviour such as mutual exclusion---with modules over the natural numbers as semantic domain---or non-passive electrical components---when considering modules over a certain field. Our main technical contribution is a complete axiomatisation for graphical affine algebra over these two interpretations. We also show, as case studies, how graphical affine algebra captures electrical circuits and the calculus of stateless connectors---a coordination language for distributed systems.</p>
 </details><em>with Filippo Bonchi, Paweł Sobociński and Fabio Zanasi,&nbsp; </em><em><a href="http://lics.siglog.org/lics19/">LICS'19</a>. <br /></em><em><a href="publications/BPSZ-lics19.pdf">PDF</a> </em>
