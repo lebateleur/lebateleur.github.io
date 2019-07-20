@@ -21,7 +21,7 @@ Click on the titles to see the abstract.
 
 The resource calculus is canonical: we equip it and its stateful extension with equational theories that characterise the underlying space of definable behaviours---a convex algebraic universe of additive relations---via isomorphisms of categories. 
 Finally, we demonstrate that our calculus is sufficiently expressive to capture behaviour definable by classical Petri nets.</p>
-</details><em>with Filippo Bonchi, Josh Holland, Paweł Sobociński and Fabio Zanasi,&nbsp; </em><em><a href="https://popl19.sigplan.org/">POPL'19</a>. <br /></em><em><a href="publications/BHPSZ-popl19.pdf">PDF</a> &middot; <a href="slides/popl19.pdf">Slides</a> </em>
+</details><em>with Filippo Bonchi, Josh Holland, Paweł Sobociński and Fabio Zanasi,&nbsp; </em><em><a href="https://popl19.sigplan.org/">POPL'19</a>. <br /></em><em><a href="publications/BHPSZ-popl19.pdf">PDF</a> &middot; <a href="https://doi.org/10.1145/3290338">DOI</a>  &middot; <a href="slides/popl19.pdf">Slides</a> </em>
 </ul>
 
 
