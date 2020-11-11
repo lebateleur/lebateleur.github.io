@@ -4,6 +4,18 @@ title: Papers
 sidebar_link: true
 ---
 
+## 2020
+
+<ul>
+<details><summary><strong>A String Diagrammatic Axiomatisation of Finite-State Automata</strong></summary><p>We develop a fully diagrammatic approach to the theory of finite-state automata, based on reinterpreting their usual state-transition graphical representation as a two-dimensional syntax of string diagrams. Moreover, we provide an equational theory that completely axiomatises language equivalence in this new setting. The proposed axiomatisation is finitary -- a result which is provably impossible to obtain for the one-dimensional syntax of regular expressions. </p>
+</details><em>with Fabio Zanasi,&nbsp; </em><em><a href="https://arxiv.org/abs/2009.14576">Preprint</a> </em>
+</ul>
+
+
+<ul>
+<details><summary><strong>Contextual Equivalence for Signal Flow Graphs</strong></summary><p>We extend the signal flow calculus---a compositional account of the classical signal flow graph model of computation---to encompass affine behaviour, and furnish it with a novel operational semantics. The increased expressive power allows us to define a canonical notion of contextual equivalence, which we show to coincide with denotational equality. Finally, we characterise the realisable fragment of the calculus: those terms that express the computations of (affine) signal flow graphs.</p>
+</details><em>with Filippo Bonchi, Paweł Sobociński and Fabio Zanasi,&nbsp; </em><em><a href="https://link.springer.com/chapter/10.1007%2F978-3-030-45231-5_5">FOSSACS'20</a>. <br /></em><em><a href="https://arxiv.org/abs/2002.08874">Preprint</a> </em>
+</ul>
 
 
 ## 2019
