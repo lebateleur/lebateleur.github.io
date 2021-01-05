@@ -8,7 +8,7 @@ sidebar_link: true
 
 <ul>
 <details><summary><strong>A String Diagrammatic Axiomatisation of Finite-State Automata</strong></summary><p>We develop a fully diagrammatic approach to the theory of finite-state automata, based on reinterpreting their usual state-transition graphical representation as a two-dimensional syntax of string diagrams. Moreover, we provide an equational theory that completely axiomatises language equivalence in this new setting. The proposed axiomatisation is finitary -- a result which is provably impossible to obtain for the one-dimensional syntax of regular expressions. </p>
-</details><em>with Fabio Zanasi,&nbsp; </em><em><a href="https://etaps.org/user-profile/list-articles/449-fossacs-2021-accepted-papers">FOSSACS'21</a>. <br/><em><a href="https://arxiv.org/abs/2009.14576">Preprint</a> </em>
+</details><em>with Fabio Zanasi,&nbsp; </em><em><a href="https://etaps.org/user-profile/list-articles/449-fossacs-2021-accepted-papers">FOSSACS'21</a>.</em> <br/><em><a href="https://arxiv.org/abs/2009.14576">Preprint</a> </em>
 </ul>
 
 ## 2020
