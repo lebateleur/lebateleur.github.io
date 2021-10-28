@@ -5,9 +5,9 @@
 # String diagrams for the $\lambda$-calculus?
 
 
-A few days ago, on twitter, [Davidad re-discovered](https://twitter.com/davidad/status/1450417170375135234) a well-known graphical representation for terms of the $\lambda$-calculus, sometimes called sharing graphs or interaction nets. Encodings of the $\lambda$-calulus (both its static syntax and its dynamic aspects) as sharing graphs/interaction nets have been the object of intense research. While it's not my area, I replied with a few tweets explaining some of the tradeoffs of this approach as I saw it--from afar, admitedly. I concluded warning that these graphs are not usually understood as string diagrams, even if it is a natural question to ask: **can we find a symmetric monoidal category for which they are genuine string diagrams?** Crucially, can we do so in a way that respects the dynamic aspects of the $\lambda$-calculus, *i.e.* such that the graph-rewriting rules implementing $\beta$-reduction are valid equations in the underlying category?
+A few days ago, on twitter, [Davidad re-discovered](https://twitter.com/davidad/status/1450417170375135234) a well-known graphical representation for terms of the $\lambda$-calculus, sometimes called sharing graphs or interaction nets. Encodings of the $\lambda$-calculus (both its static syntax and its dynamic aspects) as sharing graphs/interaction nets have been the object of intense research. While it's not my area, I replied with a few tweets explaining some of the trade-offs of this approach as I saw it--from afar, admittedly. I concluded warning that these graphs are not usually understood as string diagrams, even if it is a natural question to ask: **can we find a symmetric monoidal category for which they are genuine string diagrams?** Crucially, can we do so in a way that respects the dynamic aspects of the $\lambda$-calculus, *i.e.* such that the graph-rewriting rules implementing $\beta$-reduction are valid equations in the underlying category?
 
-This post gives one possible (*spoiler:* positive) answer to this question. It has the additional benefit of highlighting some of the issues that arise with copying/sharing of substerms during reduction. But before we get started, a word of warning: it is entirely possible that I am reinventing the wheel and I would love for someone to point me to the relevant papers if that is the case!
+This post gives one possible (*spoiler:* positive) answer to this question. It has the additional benefit of highlighting some of the issues that arise with copying/sharing of subterms during reduction. But before we get started, a word of warning: it is entirely possible that I am reinventing the wheel and I would love for someone to point me to the relevant papers if that is the case!
 
 *Prerequisites.* In this note, I assume familiarity with string diagrams, monoidal categories, and basic facts about the $\lambda$-calculus. To brush up on the first topic, [Peter Selinger's survey](https://arxiv.org/abs/0908.3347) is a safe reference. 
 
@@ -91,7 +91,7 @@ The point of introducing these last two generators was to duplicate certain diag
 
 Note that this is why we needed \figinline{/assets/img/co-copy.jpg}{4%}: when \figinline{/assets/img/copy.jpg}{4%} meets \figinline{/assets/img/abs.jpg}{4%}, we need some appropriate way of merging the two downward-flowing wires (corresponding to $X^{op}$) that result from this interaction, as in the inclusion on the left above.
 
-Before drawing a few examples, there's one last component I have not mentionned yet: *discarding*. Sometimes we need to discard variables or entire subterms (to perform garbage collection in programming language slang). Technically, a discarding operation can be defined from what we already have as 
+Before drawing a few examples, there's one last component I have not mentioned yet: *discarding*. Sometimes we need to discard variables or entire subterms (to perform garbage collection in programming language slang). Technically, a discarding operation can be defined from what we already have as 
 @@center
 \figenv{/assets/img/del-def.jpg}{22%}
 @@
@@ -133,7 +133,7 @@ The encoding of the static syntax is not the reason you read all this way, so le
 \figenv{/assets/img/skk-3.jpg}{50%}\figenv{/assets/img/skk-4.jpg}{50%}\figenv{/assets/img/skk-5.jpg}{45%}
 \figenv{/assets/img/skk-6.jpg}{15%}\figenv{/assets/img/skk-7.jpg}{25%}
 @@
-where the inclusion labelled **(Lemma)** comes from:
+where the inclusion labeled **(Lemma)** comes from:
 @@center
 \figenv{/assets/img/lemma-k-app.jpg}{50%}
 @@
@@ -154,10 +154,10 @@ Let's see what the problem is on an example. Take $(\lambda x g. (g x) x)(\lambd
 @@center
 \figenv{/assets/img/copy-pb.jpg}{57%}\figenv{/assets/img/copy-pb-2.jpg}{57%}
 @@
-The last diagram illustrates the core of the issue: when the \figenv{/assets/img/co-copy.jpg}{4%} produced by copying the first abstraction node in $(\lambda x g. (g x) x)$ meets the copying node in the same term, they should duplicate each other instead of cancelling out.
+The last diagram illustrates the core of the issue: when the \figenv{/assets/img/co-copy.jpg}{4%} produced by copying the first abstraction node in $(\lambda x g. (g x) x)$ meets the copying node in the same term, they should duplicate each other instead of canceling out.
 
 
-In summary, there are diagrams encoding well-formed $\lambda$-terms that we cannot copy. As I said earlier, this arises whenever we copy a term that itself contains a \figenv{/assets/img/copy.jpg}{4%} -- in this case, those \figenv{/assets/img/co-copy.jpg}{4%} nodes generated by copying abstraction nodes should be duplicated when they meet \figenv{/assets/img/copy.jpg}{4%} nodes instead of the two cancelling out. Diagrammatically, we would like:
+In summary, there are diagrams encoding well-formed $\lambda$-terms that we cannot copy. As I said earlier, this arises whenever we copy a term that itself contains a \figenv{/assets/img/copy.jpg}{4%} -- in this case, those \figenv{/assets/img/co-copy.jpg}{4%} nodes generated by copying abstraction nodes should be duplicated when they meet \figenv{/assets/img/copy.jpg}{4%} nodes instead of the two canceling out. Diagrammatically, we would like:
 @@center
 \figenv{/assets/img/cocopy-copy.jpg}{25%}
 @@ 
@@ -166,7 +166,7 @@ Not all is lost, however. Luckily for us, the corresponding inclusion holds in o
 We now have to choose which rule to apply any time a \figenv{/assets/img/co-copy.jpg}{4%} meets a \figenv{/assets/img/copy.jpg}{4%}, following some specific strategy. This is a well-known problem in the literature on sharing graphs/interaction nets. There are different options to deal with it. 
 - Some strategies involve keeping track of nesting of subterms. One way to do this is to introduce a notion of level and annotate nodes with the level at which they originate (as I did in the example above). Then, when \figenv{/assets/img/co-copy.jpg}{4%} and \figenv{/assets/img/copy.jpg}{4%} from the same level interact, they cancel each other out, and when they belong to different levels, they duplicate each other. This requires a significant amount of bookkeeping. An equivalent implementation introduces global features, called *boxes* which enclose subterms, delimiting the level at which they live. Stefano Guerrini's [gentle introduction to sharing graphs](https://www.sciencedirect.com/science/article/pii/S1571066105050164)  explains this. 
 - Alternatively, it is possible to determinise the rewriting strategy by keeping track of a token that moves around the graph and applies rewrite rules only where the token is located. This is [the approach taken by François-Régis Sinot](https://link.springer.com/chapter/10.1007/11417170_28).
-- Another approach sidesteps the problem by disallowing terms that do not follow a form of syntactic stratification (if you're looking for the relevant keywords, they are terms typable in *elementary linear logic*, a form of substructural logic with restricted copying, whose cut elimination procedure is guaranteed to terminate in elementary time in the size of terms).
+- Another approach sidesteps the problem by disallowing terms that do not follow a form of syntactic stratification (if you're looking for the relevant keywords, they are terms typeable in *elementary linear logic*, a form of substructural logic with restricted copying, whose cut elimination procedure is guaranteed to terminate in elementary time in the size of terms).
 - Finally, the more radical approach is to accept that the correspondence between diagrams and terms is not perfect, and look for another syntactic encoding. What we have here is a Turing-complete graph rewriting system, so we are free to cook up any encoding of the $\lambda$-calculus we like, just like we could encode it on a Turing machine or a register machine. Luckily, there are clever encodings that manage to stay close to the one we've seen here. For example, [Ian Mackie and Jorge Sousa Pinto's translation](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.9699), which reproduce features of the encoding of $\lambda$-terms as linear logic proofs[^4], is not too difficult to understand. 
 
 Coming back to our string diagrammatic interpretation, one nice feature is that the problem with copying acquires semantic content. Let me explain. We have two different inclusions to deal with the composite \figenv{/assets/img/co-copy.jpg}{4%};\figenv{/assets/img/copy.jpg}{4%}. It turns out that these two possible choices can themselves be ordered:
@@ -177,14 +177,14 @@ This can be seen as a consequence of the adjunction between \figinline{/assets/i
 @@center
 \figenv{/assets/img/copy-cocopy-cancel-proof.jpg}{58%}
 @@
-So, if we always choose to duplicate \figenv{/assets/img/co-copy.jpg}{4%} and \figenv{/assets/img/copy.jpg}{4%}, we do not lose any semantic information. Of course, to recover a valid $\lambda$-term we will need to disconnect some wires *eventually*, using the second inclusion. This means that we can always postpone the choice of which wires to disconnect until the end. I found this surprising. Note that there is a space-time tradeoff in this choice, as constantly duplicating nodes will increase the size of the diagram exponentially. In a way, we would be keeping track of all possible reductions, only committing to a specific form when disconnecting enough wires to recover a well-formed $\lambda$-term, *i.e.* a diagram made only from \figenv{/assets/img/abs.jpg}{4%}, \figenv{/assets/img/app.jpg}{4%}, \figenv{/assets/img/copy.jpg}{4%} and \figenv{/assets/img/cup.jpg}{4%}.
+So, if we always choose to duplicate \figenv{/assets/img/co-copy.jpg}{4%} and \figenv{/assets/img/copy.jpg}{4%}, we do not lose any semantic information. Of course, to recover a valid $\lambda$-term we will need to disconnect some wires *eventually*, using the second inclusion. This means that we can always postpone the choice of which wires to disconnect until the end. I found this surprising. Note that there is a space-time trade-off in this choice, as constantly duplicating nodes will increase the size of the diagram exponentially. In a way, we would be keeping track of all possible reductions, only committing to a specific form when disconnecting enough wires to recover a well-formed $\lambda$-term, *i.e.* a diagram made only from \figenv{/assets/img/abs.jpg}{4%}, \figenv{/assets/img/app.jpg}{4%}, \figenv{/assets/img/copy.jpg}{4%} and \figenv{/assets/img/cup.jpg}{4%}.
 
 
 ## What is $X$?
 
 As we saw, if we can encode any $\lambda$-term as a string diagram, we can also draw diagrams that do not correspond to any term. In fact, some of these may appear during the reduction process, because diagrammatic reduction is more fined-grained than $\beta$-reduction. This is a feature and a bug, depending on how you look at it. A feature, because the point of introducing diagrams is to keep track of resources, via explicit copying and discarding. A bug, because the increased granularity needs to be approached carefully if we really want to mimic $\beta$-reduction. 
 
-To even draw these diagrams we needed our generators to satisfy certain properties. You may be wondering what these mean, semantically. Of course, you can appraoch the problem purely formally and say that these conditions are just what you need to implement $\beta$-reduction. But here's how I think about $X$ in order to make all the required inclusions true. We can construct $X$ as the set of downward-closed sets of $\Lambda$. This is the free semilattice over $\Lambda$. Constructed in this way, the elements of $X$ that are not of the form $\{u\,: u\leq t\}$ for some term $t$, can be thought of as generated by some set of terms. In other words, we can think of the elements of $X$ as types! This might seem a bit strange because, from this point of view, terms are also types. But this is not so crazy if we view both types and terms as *behaviours* with varying degrees of nondeterminism. In other words, for two elements of $X$, $x\leq y$ can be read as $x$ implements/refines/realises the specification $y$. With this in mind, we can think of diagrams $1\rightarrow X$ (with a single outgoing wire) that do not encode a $\lambda$-term as types or specifications that are not fully deterministic. I'm not entirely sure what this means, but it sounds profound.
+To even draw these diagrams we needed our generators to satisfy certain properties. You may be wondering what these mean, semantically. Of course, you can approach the problem purely formally and say that these conditions are just what you need to implement $\beta$-reduction. But here's how I think about $X$ in order to make all the required inclusions true. We can construct $X$ as the set of downward-closed sets of $\Lambda$. This is the free semi-lattice over $\Lambda$. Constructed in this way, the elements of $X$ that are not of the form $\{u\,: u\leq t\}$ for some term $t$, can be thought of as generated by some set of terms. In other words, we can think of the elements of $X$ as types! This might seem a bit strange because, from this point of view, terms are also types. But this is not so crazy if we view both types and terms as *behaviours* with varying degrees of nondeterminism. In other words, for two elements of $X$, $x\leq y$ can be read as $x$ implements/refines/realises the specification $y$. With this in mind, we can think of diagrams $1\rightarrow X$ (with a single outgoing wire) that do not encode a $\lambda$-term as types or specifications that are not fully deterministic. I'm not entirely sure what this means, but it sounds profound.
 
 # References
 
@@ -200,7 +200,7 @@ To even draw these diagrams we needed our generators to satisfy certain properti
 
 [^3]: I originally wanted to write that the resulting rewriting system was no longer confluent. While technically true, this is also the case of the previous system, if we include the use of inclusions coming from the adjunction between \figinline{/assets/img/del.jpg}{2%} and \figinline{/assets/img/co-del.jpg}{2.5%}.
 
-[^4]: The correspondence with linear logic is a recurring theme in this area. The boxes/levels I've mentionned are also a way of encoding the *exponentials* -- the modality that controls access to copying and deleting in linear logic.
+[^4]: The correspondence with linear logic is a recurring theme in this area. The boxes/levels I've mentioned are also a way of encoding the *exponentials* -- the modality that controls access to copying and deleting in linear logic.
 
 
 
