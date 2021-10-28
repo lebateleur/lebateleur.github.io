@@ -1,7 +1,7 @@
-# Ignore docs files
-_gh_pages
-_site
-.ruby-version
+__site/
+franklin
+franklin.pub
+node_modules/
 
 # Numerous always-ignore extensions
 *.diff
