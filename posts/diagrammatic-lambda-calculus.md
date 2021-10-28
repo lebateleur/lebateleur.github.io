@@ -5,7 +5,7 @@
 # String diagrams for the $\lambda$-calculus?
 
 
-A few days ago, on twitter, [Davidad re-discovered](https://twitter.com/davidad/status/1450417170375135234) a well-known graphical representation for terms of the $\lambda$-calculus, sometimes called sharing graphs or interaction nets. Encodings of the $\lambda$-calculus (both its static syntax and its dynamic aspects) as sharing graphs/interaction nets have been the object of intense research for a long time. While it's not my area, I replied with a few tweets explaining some of the trade-offs of this approach as I saw it--from afar, admittedly. I concluded warning that these graphs are not usually understood as string diagrams, even if it is a natural question to ask: **can we find a symmetric monoidal category for which they are genuine string diagrams?** Crucially, can we do so in a way that respects the dynamic aspects of the $\lambda$-calculus, *i.e.* such that the graph-rewriting rules implementing $\beta$-reduction are valid equations in the underlying category?
+A few days ago, on twitter, [Davidad re-discovered](https://twitter.com/davidad/status/1450417170375135234) a well-known graphical representation for terms of the $\lambda$-calculus, sometimes called sharing graphs or interaction nets. These graphical encodings of the $\lambda$-calculus have been the object of intense research for a long time. While it's not my area, I replied with a few tweets explaining some of the trade-offs of this approach as I saw it--from afar, admittedly. I concluded warning that these graphs are not usually understood as string diagrams, even if it is a natural question to ask: **can we find a symmetric monoidal category for which they are genuine string diagrams?** Crucially, can we do so in a way that respects the dynamic aspects of the $\lambda$-calculus, *i.e.* such that the graph-rewriting rules implementing $\beta$-reduction are valid equations in the underlying category?
 
 This post gives one possible (*spoiler:* positive) answer to this question. It has the additional benefit of highlighting some of the issues that arise with copying/sharing of subterms during reduction. But before we get started, a word of warning: it is entirely possible that I am reinventing the wheel and I would love for someone to point me to the relevant papers if that is the case!
 
@@ -133,12 +133,18 @@ The encoding of the static syntax is not the reason you read all this way, so le
 \figenv{/assets/img/skk-3.jpg}{50%}\figenv{/assets/img/skk-4.jpg}{50%}\figenv{/assets/img/skk-5.jpg}{45%}
 \figenv{/assets/img/skk-6.jpg}{15%}\figenv{/assets/img/skk-7.jpg}{25%}
 @@
-where the inclusion labeled **(Lemma)** comes from:
+where the inclusion labeled **(Lemma)** comes from replacing $K$ by its definition and applying the following twice: 
 @@center
 \figenv{/assets/img/lemma-k-app.jpg}{50%}
 @@
 
-Phew! If it seems long-winded that's because it is. But there is a good reason: one of the main points of graphical encodings of the $\lambda$-calculus is to make substitution explicit, operating at a finer level of granularity in order to keep track of resources more precisely. The thing is, on its own, the $\lambda$-calculus is too abstract to constitute a concrete model of computation. Even with a fixed reduction strategy (say, call-by-value) a single $\beta$-reduction step requires a global substitution of an the argument for all occurrences of a bound variable inside the body of a term. This substitution cannot be implemented in constant time in general on a concrete model of computation, like a Turing machine or your actual physical computer. On the other hand, if you take a closer look at the diagrams above, you'll notice that, at each step, we only perform local rewrites, operating in constant time and space. Another advantage is that non-overlapping rewrites can be performed in parallel.
+We did not use the adjunction between \figinline{/assets/img/copy.jpg}{4%} and \figinline{/assets/img/co-copy.jpg}{4%} in this example so let's compute another (useless) one: $(\lambda fx. f (f x)) (\lambda x.x)$. This amounts to applying the identity twice to an argument---this should give us back the identity! Let's check that this is the case. This time I'll go a bit faster, but watch out for the third inclusion, where  \figinline{/assets/img/copy.jpg}{4%} and \figinline{/assets/img/co-copy.jpg}{4%} cancel each other out:
+@@center
+\figenv{/assets/img/id-twice.jpg}{65%}
+@@
+
+Phew! If these examples seem long an tedious that's because they are. Not that it's fun to compute normal forms in the standard $\lambda$-calculus, but the diagrammatic version looks even more complicated. There is a good reason for this: one of the main points of graphical encodings of the $\lambda$-calculus is to make substitution explicit, operating at a finer level of granularity in order to keep track of resources more precisely. The thing is, on its own, the $\lambda$-calculus is too abstract to constitute a concrete model of computation. Even with a fixed reduction strategy (say, call-by-value) a single $\beta$-reduction step requires a global substitution of an argument for all occurrences of a bound variable inside the body of a term. This substitution cannot be implemented in constant time in general on a concrete model of computation, like a Turing machine or your actual physical computer. On the other hand, if you take a closer look at the diagrams above, you'll notice that, at each step, we only perform local rewrites, operating in constant time and space. Another advantage is that non-overlapping rewrites can be performed in parallel.
+
 
 So what's the catch?
 
