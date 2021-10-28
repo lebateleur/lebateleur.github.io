@@ -42,7 +42,7 @@ In order to interpret our diagrams as relational profunctors, we first fix a sin
 One of the reasons we chose to work with relational profunctors is that we can also ask for the existence of *adjoints* where we need them. 
 @@remark
 **Definition.** *(Adjunction for relational profunctors)* We say that $R: X\rightarrow Y$ is *left adjoint* to $S: Y\rightarrow X$ iff 
-\[\label{adjoints}  \quad S ; R \subseteq id_Y \text{and} \quad R ; S \subseteq id_X\]
+\[\label{adjoints}  S ; R \subseteq id_Y \quad  \text{and} \quad R ; S \subseteq id_X\]
 where $\subseteq$ denotes the inclusion of relations, seen as subsets. 
 @@
 
