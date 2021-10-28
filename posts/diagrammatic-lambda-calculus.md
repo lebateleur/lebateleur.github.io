@@ -42,7 +42,7 @@ In order to interpret our diagrams as relational profunctors, we first fix a sin
 One of the reasons we chose to work with relational profunctors is that we can also ask for the existence of *adjoints* where we need them. 
 @@remark
 **Definition.** *(Adjunction for relational profunctors)* We say that $R: X\rightarrow Y$ is *left adjoint* to $S: Y\rightarrow X$ iff 
-\[\label{adjoints} R ; S \subseteq id_X \quad \text{and} \quad S ; R \subseteq id_Y\]
+\[\label{adjoints}  \quad S ; R \subseteq id_Y \text{and} \quad R ; S \subseteq id_X\]
 where $\subseteq$ denotes the inclusion of relations, seen as subsets. 
 @@
 
@@ -57,7 +57,7 @@ We now have enough machinery to encode *linear* $\lambda$-terms diagrammatically
 @@
 All closed linear terms become arrows of type $1\rightarrow X$; pictorially, diagrams with a single output wire at the top. We can translate open terms in the same way, leaving free variables as input wires at the bottom. 
 
-What about $\beta$-reduction? This is taken care of by one direction of the adjunction between \figenv{/assets/img/co-abs.jpg}{6%} and \figenv{/assets/img/abs.jpg}{4%}. Following \eqref{adjoints}, the second inclusion becomes:
+What about $\beta$-reduction? This is taken care of by one direction of the adjunction between \figenv{/assets/img/co-abs.jpg}{6%} and \figenv{/assets/img/abs.jpg}{4%}. Following \eqref{adjoints}, the first inclusion becomes:
 @@center
 \figenv{/assets/img/adjunction-abs-coabs.jpg}{27%} or, equivalently, \figenv{/assets/img/beta-reduction.jpg}{50%}\label{equation beta-reduction}
 @@
@@ -66,6 +66,13 @@ To see the connection with $\beta$-reduction more clearly, let's apply it to a r
 \figenv{/assets/img/beta-reduction-ex.jpg}{50%}\label{equation beta-reduction}
 @@
 The \figinline{/assets/img/cup.jpg}{4%} at the bottom connects the wire representing the free $x$ variable in $t$ to the abstraction node. After applying the first inclusion, the $x$-wire gets reconnected to the argument, $u$. The result is the diagrammatic counterpart of the substitution $t[x:=u]$.
+
+So far we've only used one side of \eqref{adjoints}. If the first inclusion corresponds to (linear) $\beta$-reduction, the second is $\eta$-expansion! Recall that it is given by $t\rightarrow_\eta \lambda x. t x$ and it is not too hard to see that how this corresponds to the following inclusion:
+@@center
+\figenv{/assets/img/eta-expansion.jpg}{15%}
+@@
+I don't know if $\eta$-laws are a standard feature of the sharing graph/interaction net literature, but it certainly seems natural to include it here, as it constitutes one side of the adjunction between application and abstraction.
+
 
 ## Copying and discarding
 
