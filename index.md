@@ -1,3 +1,5 @@
+@def title="Robin Piedeleu"
+
 I am a postdoctoral researcher in the [Programming Principles, Logic, and Verification](http://pplv.cs.ucl.ac.uk/welcome/) group at University College London.
 
 My research is in theoretical computer science with a broader focus on the study of open systems arising in various scientific contexts. I employ algebraic tools, in particular those of category theory, with an emphasis on [monoidal (higher) categories](https://en.wikipedia.org/wiki/Monoidal_category) and [diagrammatic reasoning](https://en.wikipedia.org/wiki/String_diagram) as a unifying language.
