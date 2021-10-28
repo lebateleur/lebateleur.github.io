@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  Robin Piedeleu  ]]>
+    </title>
+    <link> https://piedeleu.com </link>
+    <description>
+      <![CDATA[  Robin Piedeleu&#39;s academic webpage  ]]>
+    </description>
+    <atom:link
+      href="https://piedeleu.com/feed.xml"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  String diagrams for the lambda-calculus?  ]]>
+  </title>
+  <link> https://piedeleu.com/posts/diagrammatic-lambda-calculus/index.html </link>
+  <guid> https://piedeleu.com/posts/diagrammatic-lambda-calculus/index.html </guid>
+  <description>
+    <![CDATA[  A string-diagrammatic interpretation of the lambda-calculus  ]]>
+  </description>  
+    
+  <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Robin Piedeleu</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  Research  ]]>
+  </title>
+  <link> https://piedeleu.com/research/index.html </link>
+  <guid> https://piedeleu.com/research/index.html </guid>
+  <description>
+    <![CDATA[  Robin Piedeleu&#39;s research &#40;preprints and publications&#41;  ]]>
+  </description>  
+    
+  <pubDate>Fri, 22 Mar 2019 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Robin Piedeleu</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>
