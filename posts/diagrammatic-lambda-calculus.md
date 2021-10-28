@@ -5,9 +5,9 @@
 # String diagrams for the $\lambda$-calculus?
 
 
-A few days ago, on twitter, [Davidad re-discovered](https://twitter.com/davidad/status/1450417170375135234) a well-known graphical representation for terms of the $\lambda$-calculus, sometimes called sharing graphs or interaction nets. These graphical encodings of the $\lambda$-calculus have been the object of intense research for a long time. While it's not my area, I replied with a few tweets explaining some of the trade-offs of this approach as I saw it--from afar, admittedly. I concluded warning that these graphs are not usually understood as string diagrams, even if it is a natural question to ask: **can we find a symmetric monoidal category for which they are genuine string diagrams?** Crucially, can we do so in a way that respects the dynamic aspects of the $\lambda$-calculus, *i.e.* such that the graph-rewriting rules implementing $\beta$-reduction are valid equations in the underlying category?
+A few days ago, on twitter, [Davidad re-discovered](https://twitter.com/davidad/status/1450417170375135234) a well-known graphical representation for terms of the $\lambda$-calculus, sometimes called sharing graphs or interaction nets. These graphical encodings have been the object of intense research for a long time. While it's not my area, I replied with a few tweets explaining some of the trade-offs of this approach as I saw it--from afar, admittedly. I concluded warning that these graphs are not usually understood as string diagrams, even if it is a natural question to ask: **can we find a symmetric monoidal category for which they are genuine string diagrams?** Crucially, can we do so in a way that respects the dynamic aspects of the $\lambda$-calculus, *i.e.* such that the graph-rewriting rules implementing $\beta$-reduction are valid equations in the underlying category?
 
-This post gives one possible (*spoiler:* positive) answer to this question. It has the additional benefit of highlighting some of the issues that arise with copying/sharing of subterms during reduction. But before we get started, a word of warning: it is entirely possible that I am reinventing the wheel and I would love for someone to point me to the relevant papers if that is the case!
+This post gives one partial answer to this question. I will interpret diagrams as certain relations and show that $\beta$-reduction corresponds to inclusion of relations. The chosen semantics has the additional benefit of highlighting some of the issues that arise with copying/sharing of subterms during reduction. But before we get started, a word of warning: it is entirely possible that I am reinventing the wheel and I would love for someone to point me to the relevant papers if that is the case!
 
 *Prerequisites.* In this note, I assume familiarity with string diagrams, monoidal categories, and basic facts about the $\lambda$-calculus. To brush up on the first topic, [Peter Selinger's survey](https://arxiv.org/abs/0908.3347) is a safe reference. 
 
@@ -55,7 +55,7 @@ We now have enough machinery to encode *linear* $\lambda$-terms diagrammatically
 @@center 
 \figenv{/assets/img/linear-encodings.jpg}{55%} 
 @@
-All closed linear terms become arrows of type $1\rightarrow X$; pictorially, diagrams with a single output wire at the top. We can translate open terms in the same way, leaving free variables as input wires at the bottom. 
+All closed linear terms become arrows of type $1\rightarrow X$ or, pictorially, diagrams with a single output wire at the top. We can translate open terms in the same way, leaving free variables as input wires at the bottom. 
 
 What about $\beta$-reduction? This is taken care of by one direction of the adjunction between \figenv{/assets/img/co-abs.jpg}{6%} and \figenv{/assets/img/abs.jpg}{4%}. Following \eqref{adjoints}, the first inclusion becomes:
 @@center
