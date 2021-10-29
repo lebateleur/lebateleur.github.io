@@ -19,9 +19,13 @@ This post gives one partial answer to this question. I will interpret diagrams a
 First, we need a symmetric monoidal category in which to interpret our diagrams. This will be the category of *relational profunctors*. While profunctors can be scary, relational profunctors are their friendlier, decategorified cousins. The category of relational profunctors has preordered sets as objects and monotone relations $R\subseteq X\times Y$ as morphisms $X\rightarrow Y$. A relation is monotone if whenever $(x,y)\in R$ and $x'\leq x$, $y \leq y'$ then $(x',y')\in R$. Composition in this category is the usual composition of binary relations, given by $R;S = \{(x,z) \,:\, \exists y.\, (x,y)\in R \land (y,z)\in S\}$, which we write in diagrammatic order. The identity on a preorder is none other than the order relation itself!
 
 
-With the usual product of preorders -- the cartesian product of sets with the order on pairs given by $(x,y)\leq (x',y')$ iff $x\leq x'$ and $y\leq y'$ -- this category is symmetric monoidal, with unit for the monoidal product the singleton set $1$ with the only possible order. Great -- we have a canvas on which to draw string diagrams. In fact, it is a particularly nice setting because relational profunctors form a *compact closed* category: each object $X$ has a dual $X^{op}$ with the same underlying set but the opposite ordering, and there are arrows 
+With the usual product of preorders -- the cartesian product of sets with the order on pairs given by $(x,y)\leq (x',y')$ iff $x\leq x'$ and $y\leq y'$ -- this category is symmetric monoidal, with unit for the monoidal product the singleton set $1$ with the only possible order. Great -- we have a canvas on which to draw string diagrams. In fact, it is a particularly nice setting because relational profunctors form a *compact closed* category: each object $X$ has a dual $X^{op}$ with the same underlying set but the opposite ordering, and arrows 
 @@center
-\figinline{/assets/img/cup.jpg}{4%}$: 1 \rightarrow X\times X^{op}$ and \figinline{/assets/img/cap.jpg}{4.5%}$: X^{op}\times X\rightarrow 1$ 
+\figinline{/assets/img/cup.jpg}{4%}$: 1 \rightarrow X\times X^{op}$ given by $\{(\bullet, (x',x)) : x\leq x'\}$
+@@
+and
+@@center
+ \figinline{/assets/img/cap.jpg}{4.5%}$: X^{op}\times X\rightarrow 1$ given by $\{((x,x'),\bullet) : x\leq x'\}$
 @@
 satisfying the following intuitive equations[^1] :
 @@center
@@ -39,11 +43,11 @@ The two equalities above relate an object to its dual and, diagrammatically, giv
 
 In order to interpret our diagrams as relational profunctors, we first fix a single object -- a preordered set $X$ -- equipped with a binary operation \figenv{/assets/img/app.jpg}{4%}$: X\times X \rightarrow X$. Note that we do not require that this relation be associative. You can think of $X$ as a preordered set containing $\Lambda$, the set of (closed) $\lambda$-terms ordered by the reflexive and transitive closure of $\rightarrow_\beta$. In this particular case, you can take \figenv{/assets/img/app.jpg}{4%} to be any monotone binary relation that restricts over $\Lambda$ to (the graph of) application of $\lambda$-terms, $\{((u,v),t) : uv \rightarrow^*_\beta t\}$. But we will prefer to work axiomatically, without committing to any specific model, simply requiring properties of $X$ as we need them. In fact, one reason we do not simply take $X=\Lambda$ is that we need our model to be better behaved than $\Lambda$, so we enlarge it to get the desired properties.  
 
-One of the reasons we chose to work with relational profunctors is that we can also ask for the existence of *adjoints* where we need them. 
+We chose to work with relational profunctors because we can also ask for the existence of *adjoints* where we need them. 
 @@remark
-**Definition.** *(Adjunction for relational profunctors)* We say that $R: X\rightarrow Y$ is *left adjoint* to $S: Y\rightarrow X$ iff 
-\[\label{adjoints}  S ; R \subseteq id_Y \quad  \text{and} \quad R ; S \subseteq id_X\]
-where $\subseteq$ denotes the inclusion of relations, seen as subsets. 
+**Definition.** *(Adjunction for relational profunctors)* We say that $L: X\rightarrow Y$ is *left adjoint* to $R: Y\rightarrow X$ iff 
+\[\label{adjoints}  R ; L \subseteq id_Y \quad  \text{and} \quad L ; R \subseteq id_X\]
+where $\subseteq$ denotes the inclusion of relations (seen as subsets). 
 @@
 
 
@@ -127,14 +131,13 @@ Finally, \figinline{/assets/img/del.jpg}{2%} and \figinline{/assets/img/co-del.j
 ## Putting it all together
 
 With copying and discarding, we can extend our encoding of linear $\lambda$-terms to all terms, simply copying a variable with \figenv{/assets/img/copy.jpg}{4%} when it is used multiple times or discarding it with \figenv{/assets/img/del.jpg}{2%} when it is not used.  
-
-All the inclusions we have covered so far can be interpreted as rewriting rules for our diagrams. The hope is that the resulting rewriting system is a diagrammatic implementation of $\beta$-reduction. As we will see, our wishes do come true sometimes, [but not always](#the_problem_with_copying).
-
-Let's see it all at work on [a few standard examples](https://en.wikipedia.org/wiki/SKI_combinator_calculus):
+Let's see it at work on [a few standard examples](https://en.wikipedia.org/wiki/SKI_combinator_calculus):
 @@center
 \figenv{/assets/img/example-terms.jpg}{65%}
 @@
-The encoding of the static syntax is not the reason you read all this way, so let's see how the diagrammatic counterpart of reduction behaves on a simple example. It is a basic exercise to show $SKK=I$. Here's how we prove it diagrammatically:
+The encoding of the static syntax is not the reason you read all this way, so let me show you how the diagrammatic counterpart of reduction behaves. All the inclusions we have covered so far can be interpreted as rewriting rules. The hope is that the resulting rewriting system is a diagrammatic implementation of $\beta$-reduction. As we will see, our wishes do come true sometimes, [but not always](#the_problem_with_copying).
+
+It is a basic exercise to show $SKK\rightarrow_\beta I$. Here's how we can prove the same fact diagrammatically:
 @@center
 \figenv{/assets/img/skk-1.jpg}{45%} \figenv{/assets/img/skk-2.jpg}{30%}
 \figenv{/assets/img/skk-3.jpg}{50%}\figenv{/assets/img/skk-4.jpg}{50%}\figenv{/assets/img/skk-5.jpg}{45%}
@@ -145,12 +148,12 @@ where the inclusion labeled **(Lemma)** comes from replacing $K$ by its definiti
 \figenv{/assets/img/lemma-k-app.jpg}{50%}
 @@
 
-We did not use the adjunction between \figinline{/assets/img/copy.jpg}{4%} and \figinline{/assets/img/co-copy.jpg}{4%} in this example so let's compute another (useless) one: $(\lambda fx. f (f x)) (\lambda x.x)$. This amounts to applying the identity twice to an argument---this should give us back the identity! Let's check that this is the case. This time I'll go a bit faster, but watch out for the third inclusion, where  \figinline{/assets/img/copy.jpg}{4%} and \figinline{/assets/img/co-copy.jpg}{4%} cancel each other out:
+We have not yet used the adjunction between \figinline{/assets/img/copy.jpg}{4%} and \figinline{/assets/img/co-copy.jpg}{4%}, so let's compute another (useless) example: $(\lambda fx. f (f x)) (\lambda x.x)$. This amounts to applying the identity twice to an argument---this should give us back the identity! Let's check that this is the case. This time I'll go a bit faster, but watch out for the third inclusion, where  \figinline{/assets/img/copy.jpg}{4%} and \figinline{/assets/img/co-copy.jpg}{4%} cancel each other out:
 @@center
 \figenv{/assets/img/id-twice.jpg}{65%}
 @@
 
-Phew! If these examples seem long an tedious that's because they are. Not that it's fun to compute normal forms in the standard $\lambda$-calculus, but the diagrammatic version looks even more complicated. There is a good reason for this: one of the main points of graphical encodings of the $\lambda$-calculus is to make substitution explicit, operating at a finer level of granularity in order to keep track of resources more precisely. The thing is, on its own, the $\lambda$-calculus is too abstract to constitute a concrete model of computation. Even with a fixed reduction strategy (say, call-by-value) a single $\beta$-reduction step requires a global substitution of an argument for all occurrences of a bound variable inside the body of a term. This substitution cannot be implemented in constant time in general on a concrete model of computation, like a Turing machine or your actual physical computer. On the other hand, if you take a closer look at the diagrams above, you'll notice that, at each step, we only perform local rewrites, operating in constant time and space. Another advantage is that non-overlapping rewrites can be performed in parallel.
+Phew! If these examples seem long an tedious that's because they are. Not that it's fun to compute normal forms in the standard $\lambda$-calculus, but the diagrammatic version looks even more complicated. There is a good reason for this: one of the main points of graphical encodings of the $\lambda$-calculus is to make substitution explicit, operating at a finer level of granularity in order to keep track of resources more precisely. The thing is, on its own, the $\lambda$-calculus is too abstract to constitute a concrete model of computation; substitution, the engine of computation, is left as a meta operation. Even with a fixed reduction strategy (say, call-by-value) a single $\beta$-reduction step requires a global substitution of an argument for all occurrences of a bound variable inside the body of a term. This substitution cannot be implemented in constant time in general on a concrete model of computation, like a Turing machine or your actual physical computer. On the other hand, if you take a closer look at the diagrams above, you'll notice that, at each step, we only perform local rewrites, operating in constant time and space. Another advantage is that non-overlapping rewrites can be performed in parallel.
 
 
 So what's the catch?
