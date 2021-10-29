@@ -61,7 +61,7 @@ We now have enough machinery to encode *linear* $\lambda$-terms diagrammatically
 @@
 All closed linear terms become arrows of type $1\rightarrow X$ or, pictorially, diagrams with a single output wire at the top. We can translate open terms in the same way, leaving free variables as input wires at the bottom. 
 
-What about $\beta$-reduction? This is taken care of by one direction of the adjunction between \figenv{/assets/img/co-abs.jpg}{6%} and \figenv{/assets/img/abs.jpg}{4%}. Following \eqref{adjoints}, the first inclusion becomes:
+What about $\beta$-reduction? This is taken care of by one direction of the adjunction between \figenv{/assets/img/co-abs.jpg}{6%} and \figenv{/assets/img/abs.jpg}{4%}. Following \eqref{adjoints}, the first inclusion[^3] becomes:
 @@center
 \figenv{/assets/img/adjunction-abs-coabs.jpg}{27%} or, equivalently, \figenv{/assets/img/beta-reduction.jpg}{50%}\label{equation beta-reduction}
 @@
@@ -177,13 +177,13 @@ In summary, there are diagrams encoding well-formed $\lambda$-terms that we cann
 @@center
 \figenv{/assets/img/cocopy-copy.jpg}{25%}
 @@ 
-Not all is lost, however. Luckily for us, the corresponding inclusion holds in our chosen semantics. So where's the problem? We can just add it to our list of allowed rewrite rules and carry on our business as usual. Unfortunately, if we apply these inclusions haphazardly, two different choices may lead to different diagrams -- how do we know which one is the right one?[^3]
+Not all is lost, however. Luckily for us, the corresponding inclusion holds in our chosen semantics. So where's the problem? We can just add it to our list of allowed rewrite rules and carry on our business as usual. Unfortunately, if we apply these inclusions haphazardly, two different choices may lead to different diagrams -- how do we know which one is the right one?[^4]
 
 We now have to choose which rule to apply any time a \figenv{/assets/img/co-copy.jpg}{4%} meets a \figenv{/assets/img/copy.jpg}{4%}, following some specific strategy. This is a well-known problem in the literature on sharing graphs/interaction nets. There are different options to deal with it. 
 - Some strategies involve keeping track of nesting of subterms. One way to do this is to introduce a notion of level and annotate nodes with the level at which they originate. Then, when \figenv{/assets/img/co-copy.jpg}{4%} and \figenv{/assets/img/copy.jpg}{4%} from the same level interact, they cancel each other out, and when they belong to different levels, they duplicate each other. This requires a significant amount of bookkeeping. An equivalent implementation introduces global features, called *boxes* which enclose subterms, delimiting the level at which they live. Stefano Guerrini's [gentle introduction to sharing graphs](https://www.sciencedirect.com/science/article/pii/S1571066105050164)  explains this. 
 - Alternatively, it is possible to determinise the rewriting strategy by keeping track of a token that moves around the graph and applies rewrite rules only where the token is located. This is [the approach taken by François-Régis Sinot](https://link.springer.com/chapter/10.1007/11417170_28) to encode call-by-value and call-by-need.
 - Another approach sidesteps the problem by disallowing terms that do not follow a form of syntactic stratification (if you're looking for the relevant keywords, they are terms typeable in *elementary linear logic*, a form of substructural logic with restricted copying, whose cut elimination procedure is guaranteed to terminate in elementary time in the size of terms).
-- Finally, the more radical approach is to accept that the correspondence between diagrams and terms is not perfect, and look for another syntactic encoding. What we have here is a Turing-complete graph rewriting system, so we are free to cook up any encoding of the $\lambda$-calculus we like, just like we could encode it on a Turing machine, register machine, or any other sufficiently expressive model of computation. Luckily, there are clever encodings that manage to stay close to the one we've seen here. For example, [Ian Mackie and Jorge Sousa Pinto's translation](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.9699), which reproduce features of the encoding of $\lambda$-terms as linear logic proofs[^4], is not too difficult to understand. 
+- Finally, the more radical approach is to accept that the correspondence between diagrams and terms is not perfect, and look for another syntactic encoding. What we have here is a Turing-complete graph rewriting system, so we are free to cook up any encoding of the $\lambda$-calculus we like, just like we could encode it on a Turing machine, register machine, or any other sufficiently expressive model of computation. Luckily, there are clever encodings that manage to stay close to the one we've seen here. For example, [Ian Mackie and Jorge Sousa Pinto's translation](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.9699), which reproduce features of the encoding of $\lambda$-terms as linear logic proofs[^5], is not too difficult to understand. 
 
 Coming back to our string diagrammatic interpretation, one nice feature is that the problem with copying acquires semantic content. Let me explain. We have two different inclusions to deal with the composite \figenv{/assets/img/co-copy.jpg}{4%};\figenv{/assets/img/copy.jpg}{4%}. It turns out that these two possible choices can themselves be ordered:
 @@center
@@ -214,9 +214,11 @@ To even draw these diagrams we needed our generators to satisfy certain properti
 
 [^2]: If you're already familiar with sharing graphs or interaction nets, you will notice that, unlike those, the edges of our diagrams are directed. Diagrams for relational profunctors can be drawn undirected iff $X=X^{op}$ iff the underlying order is also symmetric, *i.e.* if it is the equality over $X$. However, it is not clear in this case that abstraction can be defined over such an $X$. Is this related to how there are no good set-theoretic models for the untyped $\lambda$-calculus and one needs to turn to more exotic constructions, like those of domain theory, for instance? Perhaps someone else can enlighten me here.
 
-[^3]: I originally wanted to write that the resulting rewriting system was no longer confluent. While technically true, this is also the case of the previous system, if we include the use of inclusions coming from the adjunction between \figinline{/assets/img/del.jpg}{2%} and \figinline{/assets/img/co-del.jpg}{2.5%}.
+[^3]: Usually, denotational semantics for the untyped $\lambda$-calculus require $\beta$-equal terms to have the same denotation. We only ask here for $\beta$-reduction to be interpreted as an inclusion. Perhaps we could modify our presentation to construct an $X$ such that $X\times X^{op} \cong X$, in order to obtain a more standard semantics.
 
-[^4]: The correspondence with linear logic is a recurring theme in this area. The boxes/levels I've mentioned are also a way of encoding the *exponentials* -- the modality that controls access to copying and deleting in linear logic.
+[^4]: I originally wanted to write that the resulting rewriting system was no longer confluent. While technically true, this is also the case of the previous system, if we include the use of inclusions coming from the adjunction between \figinline{/assets/img/del.jpg}{2%} and \figinline{/assets/img/co-del.jpg}{2.5%}.
+
+[^5]: The correspondence with linear logic is a recurring theme in this area. The boxes/levels I've mentioned are also a way of encoding the *exponentials* -- the modality that controls access to copying and deleting in linear logic.
 
 
 
