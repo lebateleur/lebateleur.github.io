@@ -25,7 +25,7 @@ Finally, we showcase its use by modelling the behaviour of stateless electronic 
 remit of previous diagrammatic languages.
 
 ### A Finite Axiomatisation of Automata using String Diagrams
-with [Fabio Zanasi](https://www.zanasi.com/fabio/), submitted to LMCS Special Issue -- ArXiv version coming soon.
+with [Fabio Zanasi](https://www.zanasi.com/fabio/), submitted to LMCS Special Issue -- [PDF](https://piedeleu.com/publications/diagrammatic-automata-lmcs-submission.pdf), ArXiv version coming soon.
 
 We develop a fully diagrammatic approach to finite-state automata, based on reinterpreting their usual state-transition graphical representation as a two-dimensional
 syntax of string diagrams. In this setting, we are able to provide a complete equational theory for language equivalence, with two notable features. First, the proposed axiomatisation is finite. Second, the Kleene star is a derived concept, as it can be decomposed into more
