@@ -124,7 +124,9 @@
 </li>
 <li><p>Another approach sidesteps the problem by disallowing terms that do not follow a form of syntactic stratification &#40;if you&#39;re looking for the relevant keywords, they are terms typeable in <em>elementary linear logic</em>, a form of substructural logic with restricted copying, whose cut elimination procedure is guaranteed to terminate in elementary time in the size of terms&#41;.</p>
 </li>
-<li><p>Finally, the more radical approach is to accept that the correspondence between diagrams and terms is not perfect, and look for another syntactic encoding. What we have here is a Turing-complete graph rewriting system, so we are free to cook up any encoding of the \(\lambda\)-calculus we like, just like we could encode it on a Turing machine, register machine, or any other sufficiently expressive model of computation. Luckily, there are clever encodings that manage to stay close to the one we&#39;ve seen here. For example, <a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi&#61;10.1.1.22.9699">Ian Mackie and Jorge Sousa Pinto&#39;s translation</a>, which reproduce features of the encoding of \(\lambda\)-terms as linear logic proofs<sup id="fnref:5"><a href="#fndef:5" class="fnref">[5]</a></sup>, is not too difficult to understand. </p>
+<li><p>A more radical approach is to accept that the correspondence between diagrams and terms is not perfect, and look for another syntactic encoding. What we have here is a Turing-complete graph rewriting system, so we are free to cook up any encoding of the \(\lambda\)-calculus we like, just like we could encode it on a Turing machine, register machine, or any other sufficiently expressive model of computation. Luckily, there are clever encodings that manage to stay close to the one we&#39;ve seen here. For example, <a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi&#61;10.1.1.22.9699">Ian Mackie and Jorge Sousa Pinto&#39;s translation</a>, which reproduce features of the encoding of \(\lambda\)-terms as linear logic proofs<sup id="fnref:5"><a href="#fndef:5" class="fnref">[5]</a></sup>, is not too difficult to understand.</p>
+</li>
+<li><p>Finally, a different approach is to bake hierarchical features into the syntax itself in order to capture higher-order functions explicitly. Davidad pointed out one way to do this &#40;I was not aware of it prior to writing this post&#41; which - I have since been told - solves the same problem: in <a href="https://arxiv.org/abs/2107.13433">this paper</a>, Mario Alvarez-Picallo, Dan R. Ghica, David Sprunger, and Fabio Zanasi use hierarchical hypergraphs they call <em>hypernets</em> to encode the syntax of monoidal closed categories graphically &#40;recall that the \(\lambda\)-calculus is also another syntax for cartesian closed categories&#41;. </p>
 </li>
 </ul>
 <p>Coming back to our string diagrammatic interpretation, one nice feature is that the problem with copying acquires semantic content. Let me explain. We have two different inclusions to deal with the composite <img src="/assets/img/co-copy.jpg" style="padding:0;display:inline;width: 4%;vertical-align:middle;" alt=""/>;<img src="/assets/img/copy.jpg" style="padding:0;display:inline;width: 4%;vertical-align:middle;" alt=""/>. It turns out that these two possible choices can themselves be ordered:</p>
@@ -141,7 +143,9 @@
 </li>
 <li><p><a href="https://link.springer.com/chapter/10.1007/11417170_28">Call-by-Name and Call-by-Value as Token-Passing Interaction Nets</a>, by François-Régis Sinot.</p>
 </li>
-<li><p><a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi&#61;10.1.1.22.9699">Compiling the lambda-calculus into Interaction Combinators</a>, by Ian Mackie &amp; Jorge Sousa Pinto .</p>
+<li><p><a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi&#61;10.1.1.22.9699">Compiling the lambda-calculus into Interaction Combinators</a>, by Ian Mackie and Jorge Sousa Pinto.</p>
+</li>
+<li><p><a href="https://arxiv.org/abs/2107.13433">Functorial String Diagrams for Reverse-Mode Automatic Differentiation</a>, by Mario Alvarez-Picallo, Dan R. Ghica, David Sprunger, and Fabio Zanasi.</p>
 </li>
 </ul>
 <p><table class="fndef" id="fndef:1">
