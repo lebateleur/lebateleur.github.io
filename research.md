@@ -13,7 +13,7 @@ rss = "Robin Piedeleu's research (preprints and publications)"
 ## Preprints
 
 ### Graphical Piecewise-Linear Algebra
-with [Guillaume Boisseau](https://www.cs.ox.ac.uk/people/guillaume.boisseau/), submitted to FoSSaCS'22 -- ArXiv version coming soon.
+with [Guillaume Boisseau](https://www.cs.ox.ac.uk/people/guillaume.boisseau/), submitted to FoSSaCS'22 -- [ArXiv Preprint](https://arxiv.org/abs/2111.03956)
 
 Graphical (Linear) Algebra is a family of diagrammatic languages allowing to reason about different kinds of subsets of vector spaces compositionally. It has been used to model various application domains,
 from signal-flow graphs to Petri nets and electrical circuits. In this paper,
