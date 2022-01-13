@@ -12,18 +12,6 @@ rss = "Robin Piedeleu's research (preprints and publications)"
 
 ## Preprints
 
-### Graphical Piecewise-Linear Algebra
-with [Guillaume Boisseau](https://www.cs.ox.ac.uk/people/guillaume.boisseau/), FoSSaCS'22 -- [ArXiv Preprint](https://arxiv.org/abs/2111.03956)
-
-Graphical (Linear) Algebra is a family of diagrammatic languages allowing to reason about different kinds of subsets of vector spaces compositionally. It has been used to model various application domains,
-from signal-flow graphs to Petri nets and electrical circuits. In this paper,
-we introduce to the family its most expressive member to date: Graphical Piecewise-Linear Algebra, a new language to specify piecewise-linear subsets of vector spaces.
-Like the previous members of the family, it comes with a complete axiomatisation, which means it can be used to reason about the corresponding semantic domain purely equationally, forgetting the set-theoretic
-interpretation. We show completeness using a single axiom on top of Graphical Polyhedral Algebra, and show that this extension is the small-
-est that can capture a variety of relevant constructs.
-Finally, we showcase its use by modelling the behaviour of stateless electronic circuits of ideal elements, a domain that had remained outside the
-remit of previous diagrammatic languages.
-
 ### A Finite Axiomatisation of Automata using String Diagrams
 with [Fabio Zanasi](https://www.zanasi.com/fabio/), submitted to LMCS Special Issue -- [PDF](https://piedeleu.com/publications/diagrammatic-automata-lmcs-submission.pdf), ArXiv version coming soon.
 
@@ -36,6 +24,17 @@ primitive algebraic blocks.
 
 ## Conference papers
 
+### Graphical Piecewise-Linear Algebra
+with [Guillaume Boisseau](https://www.cs.ox.ac.uk/people/guillaume.boisseau/), FoSSaCS'22 -- [ArXiv Preprint](https://arxiv.org/abs/2111.03956)
+
+Graphical (Linear) Algebra is a family of diagrammatic languages allowing to reason about different kinds of subsets of vector spaces compositionally. It has been used to model various application domains,
+from signal-flow graphs to Petri nets and electrical circuits. In this paper,
+we introduce to the family its most expressive member to date: Graphical Piecewise-Linear Algebra, a new language to specify piecewise-linear subsets of vector spaces.
+Like the previous members of the family, it comes with a complete axiomatisation, which means it can be used to reason about the corresponding semantic domain purely equationally, forgetting the set-theoretic
+interpretation. We show completeness using a single axiom on top of Graphical Polyhedral Algebra, and show that this extension is the small-
+est that can capture a variety of relevant constructs.
+Finally, we showcase its use by modelling the behaviour of stateless electronic circuits of ideal elements, a domain that had remained outside the
+remit of previous diagrammatic languages.
 
 ### A String Diagrammatic Axiomatisation of Finite-State Automata
 with [Fabio Zanasi](https://www.zanasi.com/fabio/), FoSSaCS '21 -- [ArXiv preprint](https://arxiv.org/abs/2009.14576), [DOI](https://doi.org/10.1007/978-3-030-71995-1_24)
