@@ -9,14 +9,14 @@
 
   <channel>
     <title>
-      <![CDATA[  {{fd2rss website_title}}  ]]>
+      <![CDATA[  Robin Piedeleu  ]]>
     </title>
-    <link> {{website_url}} </link>
+    <link> https://piedeleu.com </link>
     <description>
-      <![CDATA[  {{fd2rss website_description}}  ]]>
+      <![CDATA[  Robin Piedeleu&#39;s academic webpage  ]]>
     </description>
     <atom:link
-      href="{{fd_rss_feed_url}}"
+      href="https://piedeleu.com/feed.xml"
       rel="self"
       type="application/rss+xml" />
 
