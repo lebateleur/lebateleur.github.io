@@ -12,6 +12,11 @@ rss = "Robin Piedeleu's research (preprints and publications)"
 
 ## Preprints
 
+**A Complete Diagrammatic Calculus for Boolean Satisfiability**
+with Tao Gu and [Fabio Zanasi](https://www.zanasi.com/fabio/), submitted to MFPS -- [PDF](https://piedeleu.com/publications/sat-algebra.pdf)
+
+We propose a diagrammatic calculus to reason about satisfiability of Boolean formulas, and prove it to be sound and complete. We then showcase our calculus in a few case studies. First, we consider the relationship of our calculus with resolution proof systems and modern SAT-solving heuristics. Second, we consider Horn clauses, which leads us to a new decision method for propositional logic programs equivalence under Herbrand model semantics.
+
 **A Finite Axiomatisation of Automata using String Diagrams**,
 with [Fabio Zanasi](https://www.zanasi.com/fabio/), submitted to LMCS Special Issue -- [PDF](https://piedeleu.com/publications/diagrammatic-automata-lmcs-submission.pdf), ArXiv version coming soon.
 
