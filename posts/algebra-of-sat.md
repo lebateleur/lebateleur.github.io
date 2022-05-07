@@ -2,6 +2,7 @@
 @def published = "Mar. 2022" 
 @def rss = "The algebra of satisfiability"
 
+WORK IN PROGRESS
 
 # The algebra of boolean satisfiability
 
