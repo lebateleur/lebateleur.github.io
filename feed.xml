@@ -23,6 +23,25 @@
 
 <item>
   <title>
+    <![CDATA[  The algebra of satisfiability  ]]>
+  </title>
+  <link> https://piedeleu.com/posts/algebra-of-sat/index.html </link>
+  <guid> https://piedeleu.com/posts/algebra-of-sat/index.html </guid>
+  <description>
+    <![CDATA[  The algebra of satisfiability  ]]>
+  </description>  
+    
+  <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Robin Piedeleu</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
     <![CDATA[  String diagrams for the lambda-calculus?  ]]>
   </title>
   <link> https://piedeleu.com/posts/diagrammatic-lambda-calculus/index.html </link>
