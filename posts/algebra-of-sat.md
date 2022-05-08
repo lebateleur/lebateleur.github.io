@@ -2,7 +2,7 @@
 @def published = "Mar. 2022" 
 @def rss = "The algebra of satisfiability"
 
-WORK IN PROGRESS
+
 
 # The algebra of boolean satisfiability
 
@@ -17,9 +17,9 @@ It is easy to state: given a Boolean formula $f$, does there exist an interpreta
 
 Boolean satisfiability, which we will just write as SAT from now on, is the paradigmatic NP-complete problem. Despite this theoretical barrier, SAT-solving has undergone a revolution in this millenium, with modern solvers now able to handle instances containing hundreds of thousands or even millions of literals. 
 
-What is there to say about SAT from an algebraic perspective? Surely everything has already been said a long time ago. George Boole worked out the algebraic laws of classical propositional logic in the 19th century. What could I possibly contribute here? Certainly, most of what I have writen below will look like a reformulation of old ideas, in a new language. I am leaving nevertheless leaving it here in the hope that others with similar interests find them useful and beautiful. 
+What is there to say about SAT from an algebraic perspective? Surely everything has already been said a long time ago. George Boole worked out the algebraic laws of classical propositional logic in the 19th century. What new ideas could we possibly contribute here? Certainly, most of what I have writen below will look like a reformulation of old ideas, in a new language. But I am writing them here in the hope that others with similar interests find them useful and beautiful. 
 
-> This post is a teaser for an upcoming paper with [Tao Gu](http://www0.cs.ucl.ac.uk/people/T.Gu.html) and [Fabio Zanasi](https://www.zanasi.com/fabio/). I am also grateful for [Guillaume Boisseau](https://twitter.com/guillaume_bso)'s invaluable help on simplifying the equational theory and many other useful conversations. Guillaume has also started a [Youtube channel](https://www.youtube.com/channel/UCKUFRIxH0sq_wroWWZhNK3g) on diagrammatic algebra, so go check it out! 
+> This post is a teaser for a [preprint](piedeleu.com/publications/sat-algebra.pdf) with [Tao Gu](http://www0.cs.ucl.ac.uk/people/T.Gu.html) and [Fabio Zanasi](https://www.zanasi.com/fabio/). I am also grateful for many helpful discussions with [Guillaume Boisseau](https://twitter.com/guillaume_bso)'s about the equational theory. (Actually, Guillaume has also started a [Youtube channel](https://www.youtube.com/channel/UCKUFRIxH0sq_wroWWZhNK3g) on diagrammatic algebra, so go check it out!)
 
 \toc
 
@@ -38,31 +38,35 @@ This is the algebraic counterpart of the propositional inference rule that allow
 $$\forall x (x\land \bar{x} = 0)$$
 This is because, in first-order logic, the two formulations make no difference in terms of what we can prove. Indeed, if we can prove a statement $P$ containing some free variable $x$ (meaning that we are not assuming anything about $x$), we can immediately derive a proof of $\forall x. P$. Conversely, if we have a proof of the $\forall x.P$, we can instantiate it by substituting any term into $x$.  
 
-There are many other presentations of the algebraic theory of boolean algebras: for example, it is well-known that a single binary function denoting NAND suffices, albeit with much less intuitive axioms. Nevertheless, the *models* of these different theories are all the same.  
+There are many other presentations of the algebraic theory of boolean algebras: for example, it is well-known that a single binary function denoting NAND suffices (albeit with much less intuitive axioms). What matters is that the *models* of these different theories are all the same.  
 
 
 
-But wait -- didn't I say that we are only allowed to use terms involving free variables for axioms? Satisfiability involves some existential quantifiers, so it is not clear how we could state it in an algebraic theory. Given a term $f$ in the theory of boolean algebras, containing free variables $x_1,\dots, x_n$, the logical statement that $f$ is satisfiable is
+But wait -- didn't I say that we are only allowed to use terms involving free variables for axioms? Satisfiability involves some existential quantifiers, so it is not clear how we could state it in an algebraic theory. This is what I meant when I wrote above that "SAT is not algebraic". Given a term $f$ in the theory of boolean algebras, containing free variables $x_1,\dots, x_n$, the logical statement that $f$ is satisfiable is
 $$\exists x_1\dots\exists x_n (f = 1)$$
 which is outside of the algebraic realm. It is not difficult to see that this statement is equivalent to
 $$\lnot(\forall x_1\dots\forall x_n (\bar{f} =0))$$
 The first-order formula $\forall x_1\dots\forall x_n  \bar{f} =0$ can be seen as the equivalent unquantified statement $\bar{f} =0$ which *is* algebraic. So if we can prove $\bar{f} =0$, we know that $f$ is satisfiable. But if we cannot, this does not mean we have proven $\lnot(\forall x_1\dots\forall x_n \bar{f} =0)$. Not finding a proof of something is different from having a proof of its negation!
 
-Another option is to use *quantified boolean logic*. In this setting, $\exists x f$ can be interpreted as the disjunction $(f|x)\lor (f|\bar x)$, where $f|x$ (*resp.* $f|\bar x$) denotes $f$ with all instances of $x$ replaced by $1$ (*resp.* $0$). This is of course not useful to encode the satisfiability of $f$, as it would require computing its value on all assignments in the process, thus requiring us to write down an number of clauses exponential in the size of the original formula.
+Boolean formulas have different canonical forms, depending on the application. For satisfiability, formulas are typically given in *conjunctive normal form* (CNF), *i.e.* as a conjunction of disjunctions of literals (variables or negated variables). The conjuncts are typically called *clauses*. The dual form *disjunctive normal form* (DNF) -- a disjunction of conjunctions of literals -- is trivial for satisfiability, since one can read all satisfying assignments of a DNF formula $f$ from its disjuncts directly. This suggests one way of dealing with SAT algebraically: use the axioms of boolean algebra to rewrite a CNF formula $f$ to DNF. In this form, each disjunct gives a satisfying assignment of the formula, and $f$ is satisfiable iff it has a non-contradictory term (one that does not contain $x\land\lnot x$. But this approach is not so useful if all we care about is satisfiability, as it requires computing all assignments in the process, potentially writing down a number of terms exponential in the size of the $f$.
 
-Hopefully this has convinced you that the algebraic theory of boolean algebras is insufficiently expressive to encode SAT as a statement in the theory itself. Of course, we can just use a first-order existential statement to encode it, and use the full might of first-order logic to reason about SAT instances. But I'm looking for something that is more closely tailored to SAT itself, sufficiently expressive to encode the problem, but not much more. More importantly, I am looking for a genuinely algebraic treatment, in which simple equational axioms are sufficient to derive the (un)satisfiability of any given instance.
+We don't want to compute all satisfying assignments of a given $f$, we just care about the existence or non-existence of one. This is where the existential quantification comes in. It is what allows us to forget some information in the process of looking for such an assignment. Consider for example $f =(C\lor x)\land (\lnot x\lor D)$. Then $\exists x f = C\lor D$ since we don't really care about the value of $x$ anymore---$f$ is satisfiable iff $C\lor D$ is (this is an application of the important *resolution* rule. We'll come back to this below). 
+
+Hopefully this has convinced you that the algebraic theory of boolean algebras is not a convenient theory in which to encode SAT. Of course, we can just use a first-order existential statement to encode it, and use the full might of first-order logic to reason about SAT instances. But I'm looking for something that is more closely tailored to SAT itself, sufficiently expressive to encode the problem, but not much more. More importantly, I am looking for a genuinely algebraic treatment, in which simple equational axioms are sufficient to derive the (un)satisfiability of any given instance.
 
 I will show below that an algebraic treatment of SAT is possible, if we are willing to move to a different syntax. Unsurprisingly, this syntax will be diagrammatic.
 
 ## SAT is algebraic, diagrammatically
 
-Why would we need a diagrammatic syntax? As we saw in the previous section, the algebraic theory of boolean algebras is insufficiently expressive. So we're looking for some other formal system. Remember that the existential quantification is what gives SAT a particularly relational flavour: we are not simply evaluating boolean functions, but checking that there exists some assignment for which the function evaluates to true. This is a fundamentally relational, not functional constraint. In my experience, diagrammatic calculi are particularly well suited to express relational constraints. In fact, one way to think about string diagrams for relations is as a generalisation of standard algebraic syntax to the regular fragment of first-order logic, *i.e.* the fragment containing truth, conjunction, and existential quantification. In this setting, string diagrams have the advantage of highlighting key structural features, such as dependencies and connectivity between different sub-terms/diagrams.
+Why would we need a diagrammatic syntax? As we saw in the previous section, the algebraic theory of boolean algebras is insufficiently expressive. So we're looking for some other formal system. 
 
-We'll proceed in two steps. First I'll present a diagrammatic syntax to encode sets of boolean constraints before explaining how we can represent SAT instances in this language. Then, I will give a number of axioms that we can use to derive the (un)satisfiability of any given instance.
+Existential quantification is what gives SAT a particularly relational flavour: we are not simply evaluating boolean functions, but checking that there exists some assignment for which the function evaluates to true. This is a fundamentally relational, not functional constraint. In my experience, diagrammatic calculi are particularly well suited to express relational constraints. In fact, one way to think about string diagrams for relations is as a generalisation of standard algebraic syntax to the regular fragment of first-order logic, *i.e.* the fragment containing truth, conjunction, and existential quantification. In this setting, string diagrams have the advantage of highlighting key structural features, such as dependencies and connectivity between different sub-terms/diagrams.
+
+We'll proceed in two steps. First I'll present a diagrammatic syntax to encode sets of boolean constraints before explaining how we can represent SAT instances in this language. Then, I will give a number of axioms that we can use to derive the (un)satisfiability of any given instance purely equationally.
 
 ### A diagrammatic syntax for SAT
 
-The language I'll introduce now is a graphical notation for managing sets of boolean constraints expressed in *conjunctive normal form* (CNF), *i.e.* as a conjunction of disjunctions of literals.  
+The language I'll introduce now is a graphical notation for managing sets of boolean constraints expressed in CNF.
 
 A diagram with $n$ dangling wires at the top and $m$ at the bottom is interpreted as the set of satisfying assignments of some CNF formula over the set of variables $y_1,\dots,y_m,x_1,\dots,x_n$ (which we will see how to construct below). The constraint comes from setting the corresponding CNF formula to $1$. We will keep this implicit from now on, writing $(x_1\lor \bar x_2\lor x_3)\land (x_2\lor \bar x_1)$ instead of $(x_1\lor \bar x_2\lor x_3)\land (x_2\lor \bar x_1) = 1$. We will often use the CNF formula as a shorthand for its satisfying assignments, as it is a convenient notation for this set. But our diagrams are interpreted as sets though, if you prefer, you can also think of them as CNF formulas quotiented by the equivalence relation that identifies any two formulas that have the same satisfying assignments.  
 
