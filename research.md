@@ -10,24 +10,13 @@ rss = "Robin Piedeleu's research (preprints and publications)"
 
 \toc
 
-## Preprints
-
-**A Complete Diagrammatic Calculus for Boolean Satisfiability**
-with Tao Gu and [Fabio Zanasi](https://www.zanasi.com/fabio/), submitted to MFPS -- [PDF](https://piedeleu.com/publications/sat-algebra.pdf)
-
-We propose a diagrammatic calculus to reason about satisfiability of Boolean formulas, and prove it to be sound and complete. We then showcase our calculus in a few case studies. First, we consider the relationship of our calculus with resolution proof systems and modern SAT-solving heuristics. Second, we consider Horn clauses, which leads us to a new decision method for propositional logic programs equivalence under Herbrand model semantics.
-
-**A Finite Axiomatisation of Automata using String Diagrams**,
-with [Fabio Zanasi](https://www.zanasi.com/fabio/), submitted to LMCS Special Issue -- [PDF](https://piedeleu.com/publications/diagrammatic-automata-lmcs-submission.pdf), ArXiv version coming soon.
-
-We develop a fully diagrammatic approach to finite-state automata, based on reinterpreting their usual state-transition graphical representation as a two-dimensional
-syntax of string diagrams. In this setting, we are able to provide a complete equational theory for language equivalence, with two notable features. First, the proposed axiomatisation is finite. Second, the Kleene star is a derived concept, as it can be decomposed into more
-primitive algebraic blocks.
-
-**This is the journal version of our FoSSaCS'21 paper. It corrects a fundamental mistake in the conference version (see erratum below).**
-
 
 ## Conference papers
+
+**A Complete Diagrammatic Calculus for Boolean Satisfiability**
+with Tao Gu and [Fabio Zanasi](https://www.zanasi.com/fabio/), MFPS '22 -- [ArXiv](https://arxiv.org/abs/2211.12629)
+
+We propose a diagrammatic calculus to reason about satisfiability of Boolean formulas, and prove it to be sound and complete. We then showcase our calculus in a few case studies. First, we consider the relationship of our calculus with resolution proof systems and modern SAT-solving heuristics. Second, we consider Horn clauses, which leads us to a new decision method for propositional logic programs equivalence under Herbrand model semantics.
 
 **Graphical Piecewise-Linear Algebra**,
 with [Guillaume Boisseau](https://www.cs.ox.ac.uk/people/guillaume.boisseau/), FoSSaCS'22 -- [ArXiv Preprint](https://arxiv.org/abs/2111.03956)
@@ -47,7 +36,7 @@ with [Fabio Zanasi](https://www.zanasi.com/fabio/), FoSSaCS '21 -- [ArXiv prepri
 We develop a fully diagrammatic approach to the theory of finite-state automata, based on reinterpreting their usual state-transition graphical representation as a two-dimensional syntax of string diagrams. Moreover, we provide an equational theory that completely axiomatises language equivalence in this new setting. The proposed axiomatisation is finitary -- a result which is provably impossible to obtain for the one-dimensional syntax of regular expressions.
 
 
-**ERRATUM.**  Unfortunately, this paper contains a mistake in the completeness proof. The implementation of determinisation via equational reasoning does not work as expected in full generality. As a result, we cannot claim completeness of the proposed equational theory. However, it is sill possible to obtain a finite axiomatisation via another route: we have devised an extended syntax equipped with a finite equational theory that is sufficient to prove language equivalence for all diagrams corresponding to automata (*i.e.* completeness for the fragment of interest). This axiomatisation will appear in a subsequent journal version of the paper and on the arXiv soon.
+**ERRATUM.**  Unfortunately, this paper contains a mistake in the completeness proof. The implementation of determinisation via equational reasoning does not work as expected in full generality. As a result, we cannot claim completeness of the proposed equational theory. However, it is sill possible to obtain a finite axiomatisation via another route: we have devised an extended syntax equipped with a finite equational theory that is sufficient to prove language equivalence for all diagrams corresponding to automata (*i.e.* completeness for the fragment of interest). This axiomatisation has been accepted for publication in LMCS (see Journal articles below) and can be found on the [ArXiv](https://arxiv.org/abs/2211.16484).
 
 **Contextual Equivalence for Signal Flow Graphs**,
 with [Filippo Bonchi](https://scholar.google.com/citations?user=RMy4gDsAAAAJ&hl=en), [Paweł Sobociński](https://www.ioc.ee/~pawel/) and [Fabio Zanasi](https://www.zanasi.com/fabio/),  FOSSACS '20 -- [ArXiv preprint](https://arxiv.org/abs/2002.08874), [DOI](https://doi.org/10.1007/978-3-030-45231-5_5)
@@ -72,10 +61,21 @@ We introduce the resource calculus, a string diagrammatic language for concurren
 
 ## Journal papers
 
+**A Finite Axiomatisation of Automata using String Diagrams**,
+with [Fabio Zanasi](https://www.zanasi.com/fabio/), accepted for publication to LMCS (Special Issue) -- [ArXiv](https://arxiv.org/abs/2211.16484)
+
+We develop a fully diagrammatic approach to finite-state automata, based on reinterpreting their usual state-transition graphical representation as a two-dimensional
+syntax of string diagrams. In this setting, we are able to provide a complete equational theory for language equivalence, with two notable features. First, the proposed axiomatisation is finite. Second, the Kleene star is a derived concept, as it can be decomposed into more primitive algebraic blocks.
+
+**This is the journal version of our FoSSaCS'21 paper. It corrects a fundamental mistake in the conference version (see erratum below).**
+
+
 **Bialgebraic Foundations for the Operational Semantics of String Diagrams**,
 with [Filippo Bonchi](https://scholar.google.com/citations?user=RMy4gDsAAAAJ&hl=en), [Paweł Sobociński](https://www.ioc.ee/~pawel/) and [Fabio Zanasi](https://www.zanasi.com/fabio/) -- [DOI](https://doi.org/10.1016/j.ic.2021.104767)
 
 This is the journal version of [our CONCUR '19 paper](#bialgebraic_semantics_for_string_diagrams).
+
+
 
 ## Theses
 
