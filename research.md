@@ -36,7 +36,7 @@ with [Fabio Zanasi](https://www.zanasi.com/fabio/), FoSSaCS '21 -- [ArXiv prepri
 We develop a fully diagrammatic approach to the theory of finite-state automata, based on reinterpreting their usual state-transition graphical representation as a two-dimensional syntax of string diagrams. Moreover, we provide an equational theory that completely axiomatises language equivalence in this new setting. The proposed axiomatisation is finitary -- a result which is provably impossible to obtain for the one-dimensional syntax of regular expressions.
 
 
-**ERRATUM.**  Unfortunately, this paper contains a mistake in the completeness proof. The implementation of determinisation via equational reasoning does not work as expected in full generality. As a result, we cannot claim completeness of the proposed equational theory. However, it is sill possible to obtain a finite axiomatisation via another route: we have devised an extended syntax equipped with a finite equational theory that is sufficient to prove language equivalence for all diagrams corresponding to automata (*i.e.* completeness for the fragment of interest). This axiomatisation has been accepted for publication in LMCS (see Journal articles below) and can be found on the [ArXiv](https://arxiv.org/abs/2211.16484).
+**ERRATUM.**  Unfortunately, this paper contains a mistake in the completeness proof. The implementation of determinisation via equational reasoning does not work as expected in full generality. As a result, we cannot claim completeness of the proposed equational theory. However, it is sill possible to obtain a finite axiomatisation via another route: we have devised an extended syntax equipped with a finite equational theory that is sufficient to prove language equivalence for all diagrams corresponding to automata (*i.e.* completeness for the fragment of interest). This axiomatisation has been accepted for publication in LMCS (see [Journal articles](#journal_papers) below) and can be found on the [ArXiv](https://arxiv.org/abs/2211.16484).
 
 **Contextual Equivalence for Signal Flow Graphs**,
 with [Filippo Bonchi](https://scholar.google.com/citations?user=RMy4gDsAAAAJ&hl=en), [Paweł Sobociński](https://www.ioc.ee/~pawel/) and [Fabio Zanasi](https://www.zanasi.com/fabio/),  FOSSACS '20 -- [ArXiv preprint](https://arxiv.org/abs/2002.08874), [DOI](https://doi.org/10.1007/978-3-030-45231-5_5)
@@ -67,7 +67,7 @@ with [Fabio Zanasi](https://www.zanasi.com/fabio/), accepted for publication to 
 We develop a fully diagrammatic approach to finite-state automata, based on reinterpreting their usual state-transition graphical representation as a two-dimensional
 syntax of string diagrams. In this setting, we are able to provide a complete equational theory for language equivalence, with two notable features. First, the proposed axiomatisation is finite. Second, the Kleene star is a derived concept, as it can be decomposed into more primitive algebraic blocks.
 
-**This is the journal version of our FoSSaCS'21 paper. It corrects a fundamental mistake in the conference version (see erratum below).**
+**This is the journal version of our FoSSaCS'21 paper. It corrects a fundamental mistake in the conference version (see erratum above).**
 
 
 **Bialgebraic Foundations for the Operational Semantics of String Diagrams**,
