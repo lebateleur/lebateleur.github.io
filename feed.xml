@@ -23,6 +23,25 @@
 
 <item>
   <title>
+    <![CDATA[  An introduction to causal inference via string diagrams  ]]>
+  </title>
+  <link> https://piedeleu.com/posts/diagrammatic-causal-inference/index.html </link>
+  <guid> https://piedeleu.com/posts/diagrammatic-causal-inference/index.html </guid>
+  <description>
+    <![CDATA[  An introduction to causal inference via string diagrams  ]]>
+  </description>  
+    
+  <pubDate>Tue, 31 Jan 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Robin Piedeleu</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
     <![CDATA[  The algebra of boolean satisfiability  ]]>
   </title>
   <link> https://piedeleu.com/posts/algebra-of-sat/index.html </link>
