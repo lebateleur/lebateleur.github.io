@@ -4,7 +4,7 @@
 
 # Basic causal inference via string diagrams
 
-*Does smoking cigarettes cause lung cancer?* More precisely, what is the average causal effect of smoking cigarettes on lung cancer? By now, this question has become the *hello world* of causal inference blog posts and introductions.
+*Does smoking cigarettes cause lung cancer?* More precisely, what is the *average* causal effect of smoking cigarettes (say, for a decade) on contracting lung cancer? By now, this question has become the *hello world* of causal inference blog posts and introductions.
 
 Causal inference proposes different ways of answering the question, under different assumptions. I will explore three of them using string diagrams for Markov categories and some extra assumptions that I'll clarify along the way.
 
@@ -20,8 +20,9 @@ So what can we say about $p(c|do(s))$ in the presence of confounders? To say any
 @@center
 \figenv{/assets/img/rct-causal-model.png}{100%}
 @@
+This way of translating causal networks (which are just directed acyclic graphs btw) to string diagrams in Markov categories was first proposed by Brendan Fong in his [masters' thesis](https://arxiv.org/abs/1301.6201).
 
-**How is $p(c|do(s))$ even defined?** Brushing aside many philosophical issues, causal inference defines the average causal effect $p(y|do(x))$ as the probability of $Y=y$ if we intervene at $X$ to set it to the value $x$. The standard way of computing this distribution is by running a *randomised controlled trial* (RCT) where we split the population into different subpopulations evenly and set $X$ to one possible value for each subpopulation, and observe the outcome of $Y$. Going back to our example, to measure the causal effect of smoking on cancer, we would thus need to gather a random group of people, select half randomly and force them to smoke for a few decades (while making sure the other half does not smoke). At the end of the trial, we can simply count how many in each group have contracted lung cancer to obtain $p(c|do(s))$ and $p(c|do(not s))$.
+**How is $p(c|do(s))$ even defined?** Brushing aside many philosophical issues, we define the average causal effect $p(y|do(x))$ as the probability of observing $Y=y$ if we intervene at $X$ to set it to the value $x$. In the absence of parallel universes, the standard way of computing this distribution is by running a *randomised controlled trial* (RCT) where we split the population into different subpopulations evenly and set $X$ to one possible value for each subpopulation, and observe the outcome of $Y$. Going back to our example, to measure the causal effect of smoking on cancer, we would thus need to gather a random group of people, select half randomly and force them to smoke for a few decades (while making sure the other half does not smoke). At the end of the trial, we can simply count how many in each group have contracted lung cancer to obtain $p(c|do(s))$ and $p(c|do(not s))$.
 Diagrammatically, this amounts to the severing the wire for $S$ and extending it to the bottom of the diagram:
 @@center
 \figenv{/assets/img/interventional-probability.png}{100%}
@@ -41,7 +42,10 @@ In practice, this amounts to subdividing the data into different subpopulations,
 @@center
 \figenv{/assets/img/back-door-adjustment.png}{100%}
 @@
-The formula we have derived is referred to as the backdoor adjustment. Note that here we have only used the defining axioms of Markov categories: the counitality of the comonoid structure we assume we have, and the so-called causality axiom (which encodes the normalisation of probability distributions).
+The formula we have derived is referred to as the backdoor adjustment:
+$$ p(c|do(s)) = \sum_h p(c|s,h)p(h)$$
+
+Note that here we have only used the defining axioms of Markov categories: the counitality of the comonoid structure we assume we have, and the so-called causality axiom (which encodes the normalisation of probability distributions).
 
 
 ## Frontdoor criterion: God's intervention via mediating factors
@@ -59,10 +63,13 @@ Assuming the causal structure above, we can estimate the outcome of a RCT and co
 @@center
 \figenv{/assets/img/conditional-independence-examples.png}{75%}
 @@
-Now we are ready to compute $p(c|do(s))$. The formula we derive is commonly called the frontdoor adjustment formula:
+Now we are ready to compute $p(c|do(s))$. 
 @@center
 \figenv{/assets/img/front-door-adjustment.jpg}{100%}
 @@
+The formula we derive is commonly called the frontdoor adjustment formula:
+$$p(c|do(s)) = \sum_{s'}\sum_{t}p(c|t,s')p(s')p(t|s)$$
+
 One important point: we need the dependence of $T$ on $S$ to be *noisy*, that is, we want $p(t,s)$ to be positive for all $t$ and $s$. If, for example, $S=T$, then we could not compute the conditional $p(c|t,s)$ as values for which $T$ and $S$ differ have probability zero. In more conceptual terms, $T$ does not provide any additional information so we are back in the first scenario above, and would have to perform a randomised experiment to estimate $p(c|do(s))$.
 
 ## The do-calculus and further work
@@ -77,8 +84,8 @@ Inspired by our computations above, we could take as syntax the free Markov cate
 
 
 ## References
-- The structure of this post follows that of Marcus Lewis's [Some "causal inference" intuition](https://probablymarcus.com/blocks/2021/11/04/some-causal-inference-intuition.html). The title is not a misnomer not lie---I found his post very helpful to build intuition about the frontdoor adjustment in particular.
-- The idea of turning causal networks into string diagrams is due to Brendan Fong; more details can be found in his masters' thesis [Causal Theories: A Categorical Perspective on Bayesian Networks](https://arxiv.org/abs/1301.6201).
+- The structure of this post follows that of Marcus Lewis's [Some "causal inference" intuition](https://probablymarcus.com/blocks/2021/11/04/some-causal-inference-intuition.html). The title is not a misnomer---I found his post very helpful to build intuition about the frontdoor adjustment in particular.
+- As I have already mentioned, the idea of turning causal networks into string diagrams is due to Brendan Fong; more details can be found in his masters' thesis [Causal Theories: A Categorical Perspective on Bayesian Networks](https://arxiv.org/abs/1301.6201).
 - The first treatment of interventional probabilities as string diagrams is due to Bart Jacobs, Aleks Kissinger and my coauthor, Fabio Zanasi in their paper [Causal Inference by String Diagram Surgery](https://arxiv.org/abs/1811.08338). They treat the same example and give a diagrammatic criterion for causal identifiability. 
 - Tobias Fritz's work on the synthetic approach to probability theory in Markov categories is really inspiring. I've referred to the treatment of conditionals in [A synthetic approach to Markov kernels, conditional independence and theorems on sufficient statistics](https://arxiv.org/abs/1908.07021) in Section 11 (in particular Definition 11.5) here, but the whole paper is well worth reading!
 - Judea Pearl's textbook [*Causality*](https://en.wikipedia.org/wiki/Causality_(book)) seems to be the standard reference on causal inference; I have only read the epilogue, which is a leasurly introduction to the topic, and a shorter read than [*The Book of Why*](https://en.wikipedia.org/wiki/The_Book_of_Why).
