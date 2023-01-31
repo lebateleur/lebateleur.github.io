@@ -8,7 +8,7 @@
 
 Causal inference proposes different ways of answering the question, under different assumptions. I will explore three of them using string diagrams for Markov categories and some extra assumptions that I'll clarify along the way.
 
-First, a bit of notation: following standard practice, I will write $p(c|do(s))$ for the average causal effect of smoking on cancer (we will define it more precisely below). Moreover, in all the diagrams below, empty boxes with variables $X_1, ..., X_n$ at the bottom and $Y_1,..., Y_m$ at the top represent the joint conditional $p(y_1,..., y_m|x_1,...,x_n)$. We work over a fixed sample space so that we do not need to annote the boxes; they are all uniquely determined by their type.
+First, a bit of notation: following standard practice, I will write $p(c|do(s))$ for the average causal effect of smoking on cancer (we will define it more precisely below). We use capital letters $X,Y...$ for variables and lower case letters $x,y...$ for their values. Moreover, in all the diagrams below, empty boxes with variables $X_1, ..., X_n$ at the bottom and $Y_1,..., Y_m$ at the top represent the joint conditional $p(y_1,..., y_m|x_1,...,x_n)$. We work over a fixed sample space so that we do not need to annote the boxes; they are all uniquely determined by their type. 
 
 ## A non-answer
 
@@ -59,7 +59,7 @@ Assuming the causal structure above, we can estimate the outcome of a RCT and co
 @@center
 \figenv{/assets/img/conditionals.png}{50%}
 @@
--  Second, we assume the diagrammatic versions of the conditional independence equations that are compatible with the chosen causal model. Any causal model specifies some conditional independence conditions:  concretely, every variable is independent of its non-descendants given its parents. For example, with the causal structure above, $T$ is independent of $H$ given $S$, and $C$ is independent of $S$ given $H$ and $T$, two facts which are usually written $T\bot H | S$ and $C\bot S | H,T$. Furthermore since independence is symmetric, $H\bot T | S$ There are several ways of translating these facts in the context of Markov categories; here is one way that we will reuse later:
+-  Second, we assume the diagrammatic versions of the conditional independence equations that are compatible with the chosen causal model. Any causal model specifies some conditional independence conditions:  concretely, every variable is independent of its non-descendants given its parents. For example, with the causal structure above, $T$ is independent of $H$ given $S$, and $C$ is independent of $S$ given $H$ and $T$, two facts which are usually written $T\bot H | S$ and $C\bot S | H,T$. Furthermore since independence is symmetric, we also have $H\bot T | S$. In the calculus of probability, these manifest as, *e.g.*, $p(c|t,s,h)=p(c|s,h)$ and $p(h|t,s)=p(h|s)$. There are several ways of translating these facts in the context of Markov categories; here is one way that we will reuse later:
 @@center
 \figenv{/assets/img/conditional-independence-examples.png}{75%}
 @@
