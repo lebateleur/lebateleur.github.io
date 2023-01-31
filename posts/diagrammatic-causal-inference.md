@@ -23,13 +23,14 @@ So what can we say about $p(c|do(s))$ in the presence of confounders? To say any
 This way of translating causal networks (which are just directed acyclic graphs btw) to string diagrams in Markov categories was first proposed by Brendan Fong in his [masters' thesis](https://arxiv.org/abs/1301.6201).
 
 **How is $p(c|do(s))$ even defined?** Brushing aside many philosophical issues, we define the average causal effect $p(y|do(x))$ as the probability of observing $Y=y$ if we intervene at $X$ to set it to the value $x$. In the absence of parallel universes, the standard way of computing this distribution is by running a *randomised controlled trial* (RCT) where we split the population into different subpopulations evenly and set $X$ to one possible value for each subpopulation, and observe the outcome of $Y$. Going back to our example, to measure the causal effect of smoking on cancer, we would thus need to gather a random group of people, select half randomly and force them to smoke for a few decades (while making sure the other half does not smoke). At the end of the trial, we can simply count how many in each group have contracted lung cancer to obtain $p(c|do(s))$ and $p(c|do(not s))$.
-Diagrammatically, this amounts to the severing the wire for $S$ and extending it to the bottom of the diagram:
+Diagrammatically, this amounts to the severing the wire for $S$ and extending it to the bottom of the diagram as on the left below:
 @@center
 \figenv{/assets/img/interventional-probability.png}{100%}
 @@
-A similar idea appears in a paper by [Jacobs, Kissinger and Zanasi](https://arxiv.org/abs/1811.08338) if you want to see where I'm taking that from.
+A similar idea appears in a paper by [Jacobs, Kissinger and Zanasi](https://arxiv.org/abs/1811.08338) if you want to see where I'm taking that from. 
 
-Note again that the diagram we obtain contains some unobservable quantities (those that depend on $H$), so that the only way to reliably estimate the interventional probability $p(c|do(s))$ is by running the trial. The diagram also illustrates how $p(c|do(s))$, denoted by the black box on the right, is in general $\neq p(c|s)$ which we denote by an empty box.
+We will see below (in the context of the second method) how we derive the simpler form of $p(c|do(s))$. It is not so important here because the simplified string diagram still contains some unobservable quantities (those that depend on $H$), so we cannot compute it from observational data. The only way to reliably estimate the interventional probability $p(c|do(s))$ in this case is by running the trial itself. The diagram also illustrates how $p(c|do(s))$, denoted by the black box on the right, is in general not $p(c|s)$.
+
 While rigorous, RCTs cannot and should not always be carried out (as the smoking example makes clear)! Luckily, under different assumptions, there are other ways of estimating $p(c|do(s))$ *from observational data only*.
 
 ## Backdoor criterion: conditioning on all confounders
