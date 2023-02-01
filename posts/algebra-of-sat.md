@@ -73,27 +73,42 @@ A diagram with $n$ dangling wires at the top and $m$ at the bottom is interprete
 We have a few simple generating nodes, listed below.
 
 - A plain wire is used to encode an implication between two variables, $\bar y\lor x$: 
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/id.png}{25%}
+@@
 - A white node constrains the associated variables to satisfy $\bar y_1 \lor \dots\lor \bar y_n \lor x_1 \lor \dots \lor x_m$: 
-$$DIAGRAM$$
-> **A few special cases.** A white node with only one bottom leg and no top leg represents the constraint $\bar y_1$ (forces this variable to be false) and, conversely, a white node with a single top leg but no bottom leg, represents the constraint $x_1$ (which forces this variable to be true). A white node with no dangling wires at all is the contradiction, which has no satisfying assignment (and therefore represents the empty set). 
+@@center
+\figenv{/assets/img/sat/clause-diagram.png}{50%}
+@@
+> **A few special cases.** A white node with only one bottom leg and no top leg represents the constraint $\bar y_1$ (forces this variable to be false) and, conversely, a white node with a single top leg but no bottom leg, represents the constraint $x_1$ (which forces this variable to be true). A white node with no dangling wires at all is a contradiction, which has no satisfying assignment (and therefore represents the empty set). 
 - A ternary black node with two bottom legs can be thought of as copying its top leg and enforces $(\bar y_1\lor x)\land (\bar y_2\lor x)$:
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/black-co-copy.png}{50%}
+@@
 - Dually, a ternary black node with one bottom leg and two top legs is interpreted as $(\bar y \lor x_1)\land (\bar y \lor x_2)$:
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/black-copy.png}{50%}
+@@
 - Unary black nodes places no constraints on their associated variable:
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/black-del-co-del.png}{50%}
+@@
 
 We also need to explain how to interpret composite diagrams. 
-- Placing any two diagrams side by side (without connecting any of their wires) corresponds to taking the product of the two associated relations:
-$$DIAGRAM$$
+
+Placing any two diagrams side by side (without connecting any of their wires) corresponds to taking the product of the two associated relations:
+@@center
+\figenv{/assets/img/sat/monoidal-product.png}{70%}
+@@
+Here the $a_i$ and $b_i$ represent booleans that constitute the satisfying assignment of the corresponding formulas.
 At the level of formulas, the same operation corresponds to taking the conjunction two associated CNF formulas, which is still in CNF.
  
-- Things get a bit more interesting when we connect two wires. In general, we can connect several wires together in a single operation, which we depict as vertical composition and interpret as relational composition:
-$$DIAGRAM$$
-At the level of the formulas, this is interpreted by first identifying the two opposite literals that share the same wire, and existentially quantifying over this variable: 
-$$DIAGRAM$$
-If the semantics of the first diagram $c$ is given by a CNF formula of the form $C\land (C_1\lor x)\land\dots\land(C_k\lor x)$ where the $C_i$ are all the clauses in which the variable $x$ appears and the diagram $d$ is given by $D\land (D_1\lor y)\land\dots\land(D_l\lor y)$, where the $D_i$ are all the clauses in which the variable $y$ appears, then joining the $x$-wire and the $y$-wire, gives
+Things get a bit more interesting when we connect two wires. In general, we can connect several wires together in a single operation, which we depict as vertical composition and interpret as relational composition:
+@@center
+\figenv{/assets/img/sat/composition.png}{70%}
+@@
+At the level of the formulas, this is interpreted by first identifying the two opposite literals that share the same wire, and existentially quantifying over this variable. In other words,
+if the semantics of the first diagram $c$ is given by a CNF formula of the form $C\land (C_1\lor x)\land\dots\land(C_k\lor x)$ where the $C_i$ are all the clauses in which the variable $x$ appears and the diagram $d$ is given by $D\land (D_1\lor y)\land\dots\land(D_l\lor y)$, where the $D_i$ are all the clauses in which the variable $y$ appears, then joining the $x$-wire and the $y$-wire, gives
 $$\exist z(C\land (C_1\lor z)\land\dots\land(C_k\lor z)\land D\land (D_1\lor z)\land\dots\land(D_k\lor z))$$
 with $z$ fresh to avoid capturing some other variable.
 
@@ -106,17 +121,27 @@ One last thing: we're allowed to cross wires as long as we preserve the connecti
 Given these generators and the two rules to compose them, we can represent any SAT instance as a diagram. Before giving you the general procedure, let's see it at work on two simple examples.
 
 The first is $\exist x\exist y(\bar x\lor y)\land (x\lor \bar y)$. Here, we have two variables that appear as negative and positive literals. So we will need two white nodes -- one for $x,\bar x$ and one for $y,\bar y$, each with two bottom wires, to encode the relationship $x\lor \bar x$ and $y\lor \bar y$:
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/ex-cnf-free-vars-1.png}{50%}
+@@
 Each of these wires correspond to a literal that appears precisely once in one of the two clauses. We can just connect them directly to two white nodes representing each of the two clauses in $(\bar x\lor y)\land (x\lor \bar y)$. This gives:
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/ex-cnf-1.png}{50%}
+@@
 
 For another example, let's consider the formula $\exist x\exist y(x\lor y)\land (\bar x\lor y)\land (x\lor \bar y)\land (\bar x\lor \bar y)$. Applying the same principle as above, we need two white nodes with two bottom wires each. We now have four clauses, so we will need four white nodes, each with two top wires for each of the variables appearing within the relevant clause:
-$$DIAGRAM$$
-Each literal appears in two clauses, so we have more wires at the bottom of the diagram than at the top. To deal with this, we can simply duplicate each of the wires to connect the corresponding literal to the appropriate clause and get the diagram encoding the whole SAT instance:
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/ex-cnf-free-vars-2.png}{75%}
+@@
+Each literal appears in two clauses, so we have more wires at the bottom of the diagram than at the top. To deal with this, we can simply duplicate each of the wires to connect the corresponding literal to the appropriate clause and get the diagram encoding the whole SAT instance. As before, we finish by connecting opposite literals at the top and at the bottom:
+@@center
+\figenv{/assets/img/sat/ex-cnf-2.png}{75%}
+@@
 
 From these two examples, it is clear how one can use the same idea to encode arbitrary SAT instances. First, juxtapose as many white nodes with two bottom wires (and no top wires) as there are variables in the formula. Then, for each clause add a white node with as many top wires as it contains literals (and no bottom wires). Finally, connect the clauses to literals, duplicating or discarding wires where necessary. This takes the following form:
-$$DIAGRAM$$ 
+@@center
+\figenv{/assets/img/sat/cnf-diagram-general.png}{80%}
+@@
 
 > **Monotonicity and negation.** Some readers might have noticed something strange about our encoding of SAT: in the diagrammatic syntax, we can never enforce that a variable is the negation of another, as we do not have unrestricted access to a negation operation. Here, negation is a change of direction of a wire. This leads to an apparent mismatch between the diagrammatic and standard CNF representation of a SAT instance. A a variable appearing as a positive and negative literal in a given instance, appears as the bottom and top wire connected to some white nodes. The relationship between the two occurrences is given by the clause $\bar y\lor x$, for two different variables $y$ and $x$. This leaves the possibility of setting both variables to $0$, which satisfies $\bar y\lor x$ but does not match the intuition that these two variables should be negated version of each other. However, we can show that the assignment $y=1, x=0$ does not affect the satisfiability of the overall diagram representing the corresponding SAT instance. An issue can only arise if the assignment $y=1, x=0$ is required to make the diagram satisfiable. But this can never be the case because $y$ always appears negatively as $\bar y$ in any clause and $x$ always appear positively. This implies that the satisfiability of the clauses in which they appear will only depend on the other variables and therefore leave the overall unsatisfiability of the diagram unaffected.
 
@@ -130,47 +155,65 @@ Some of these axioms can look daunting for the uninitiated. But, like for algebr
 
 I'll introduce the cast progressively. 
 
-The copying and discarding nodes together form a commutative comonoid. This means that they satisfy mirrored versions of the associativity, unitality and commutativity axioms of commutative monoids. 
-$$DIAGRAM$$
-Unsurprisingly, their mirrored versions satisfy the same axioms, mirrored about the vertical axis:
-$$DIAGRAM$$
+The black co-copying and co-discarding nodes form a monoid, while copying and discarding nodes together form a commutative comonoid. This means that they satisfy mirrored versions of the associativity, unitality and commutativity axioms of commutative monoids. 
+@@center
+\figenv{/assets/img/sat/monoid-comonoid-axioms.png}{80%}
+@@
+
 White nodes form what is called a commutative Frobenius algebra. This is a very convenient structure, which has a natural diagrammatic axiomatisation -- every connected diagram of white nodes, can be collapsed to just a single node, keeping the dangling wires fixed:
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/spider-law.png}{30%}
+@@
 This axiom is sound for our semantics because $\exists x.(C\lor x)\land (D\lor \bar x)$ is equivalent to $C\lor D$. It is thus the diagrammatic translation of the *resolution* rule in classical porpositional logic!
 
 Notice that when we collapse several white nodes to a single one, we may introduce loops, if the original diagram is not simply connected: 
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/loop-example.png}{60%}
+@@
 This is interpreted as $\exists x (C\lor x\lor \bar x)$ for some clause $C$. We can always satisfy $x\lor \bar x$ and therefore the whole clause $C\lor x\lor \bar x$, regardless of $C$'s value. Hence we can remove all constraints associated with $C$. Diagrammatically, this amounts to adding the following axioms:
-$$DIAGRAM$$ 
+@@center
+\figenv{/assets/img/sat/loop-removal-axiom.png}{20%}
+@@
  
 
-Another special case: when the network has no dangling wires, it represents a contradiction. For example,
-$$DIAGRAM$$
+Another worthy special case: when the network has no dangling wires, it represents a contradiction. For example,
+@@center
+\figenv{/assets/img/sat/contradiction.png}{40%}
+@@
 is interpreted as $\exists x(x\land \bar x)$, which is clearly contradictory. By the principle of explosion, a contradiction allows us to derive anything we want. Diagrammatically, this principle is translated as a rule that allows us to disconnect any wire:
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/ex-falso-quodlibet.png}{25%}
+@@
 
 An important principle in logic is that conjunctions distribute over disjunctions. Even though our language deals with constraints in CNF, the distributivity of the underlying lattice is witnessed by the following laws that allows us to push white and black nodes past each other:
-$$DIAGRAMS$$
-A similar form of distributivity holds in a different direction:
-$$DIAGRAMS$$
+@@center
+\figenv{/assets/img/sat/distributivity.png}{75%}
+@@
+
+So far, I have only used equational axioms, but we also need some inequalities. Formally, the expressive power of our equational theory does not change by adding inequalities. In fact, the inequality relation can be defined using just equality and the black nodes:
+@@center
+\figenv{/assets/img/sat/inequality-def.png}{75%}
+@@
+The following are important inequalities, that can be found in many other relational languages (they are the central axioms of a structure called a *cartesian bicategory*, which is what we have here):
+@@center
+\figenv{/assets/img/sat/black-adjunctions.png}{85%}
+@@
 
 
-> **Completeness.** With Tao we have shown that (one version of this) set of axioms is *complete* for the given semantics in terms of boolean formulas. This means that if any two diagrams have the same semantics, we can show that they are equal using only these equations. In other words, you can forget about the semantics, and just reason diagrammatically! In fact, some of the axioms I have given can be derived from more fundamental interactions between the generators, involving inequalities instead of equalities (cf. remark below). However, I tried to keep things a bit simpler in this blog post. For the details, check out our forthcoming paper, which should be coming to the arXiv soon. All I will say for the moment is that the completeness proof is reminiscent of quantifier elimination algorithms.
+> **Completeness.** With Tao we have shown that with only a few more axioms, the equational theory *complete* for the given semantics in terms of boolean formulas. This means that if any two diagrams have the same semantics, we can show that they are equal using only these equations. In other words, you can forget about the semantics, and just reason diagrammatically! For the details, check out the paper. All I will say for the moment is that the completeness proof is reminiscent of quantifier elimination algorithms.
 
 
 
 ## Additional remarks
 
-### Inequalities vs equalities
-
-So far, I have not mentionned inequalities. Formally, the expressive power of our equational theory does not change by adding inequalities. In fact, the inequality relation can be defined using just equality and the black nodes:
-$$DIAGRAM$$
-So every time I write 
-
 ### SAT-solving in all this
 
+One of the nice things about this language is that we can show that a given diagram represents a satisfiable instance or not by reasoning purely equationally at the level of the diagrams themselves. We treat the two examples above in the paper. The general strategy is very similar to heuristics that modern SAT solvers use. 
+
 Modern SAT solvers rely on *Clause-Driven Conflict Learning* ([CDCL](https://en.wikipedia.org/wiki/Conflict-driven_clause_learning)), itself an improved version of the *Davis–Putnam–Logemann–Loveland* ([DPLL](https://en.wikipedia.org/wiki/DPLL_algorithm)) algorithm. There is a known correspondence between these two algorithms and restricted classes of resolution proofs. The latter is easy to understand in the diagrammatic syntax. It procedes by progressively merging clauses that contain literals appearing in positive and negative form, until the diagram can be reduced to a single white node with no dangling wires, a contradiction (*cf.* above). This is perhaps best understood using inequalities, rather than the equalities of our axiomatisation.
-$$DIAGRAM$$
+@@center
+\figenv{/assets/img/sat/resolution-ex.png}{85%}
+@@
 
 
 
