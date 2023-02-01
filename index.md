@@ -9,6 +9,7 @@ Prior to joining UCL, I obtained my PhD from the University of Oxford under the 
 You can write to me at `initial_of_my_first_name.last_name@ucl.ac.uk`
 
 # News
-* Oct 2021: I wrote a [blog post](https://piedeleu.com/posts/diagrammatic-lambda-calculus/) presenting one possible string diagrammatic syntax for the lambda-calculus and its problems.
-* Jan 2021: our FoSSaCS paper [A String Diagrammatic Axiomatisation of Finite-State Automata](https://arxiv.org/abs/2009.14576) received [ETAPS best paper award](https://eatcs.org/index.php/best-etaps-paper). 
+* Jan 2023: I wrote a [blog post](https://piedeleu.com/posts/diagrammatic-causal-inference/) introducing basic causal inference topics with string diagrams. 
+* Dec 2022: our paper, [A Finite Axiomatisation of Finite-State Automata Using String Diagrams](https://arxiv.org/abs/2211.16484), has been accepted for publication in LMCS. 
+* Mar 2022: I wrote a [blog post](https://piedeleu.com/posts/algebra-of-sat/) about our paper, [A Complete Diagrammatic Calculus for Boolean Satisfiability](https://arxiv.org/abs/2211.12629).
 
