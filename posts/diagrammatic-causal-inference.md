@@ -12,15 +12,15 @@ First, a bit of notation: following standard practice, I will write $p(c|do(s))$
 
 ## A non-answer
 
-By now, everyone knows that *correlation does not imply causation*. Therefore, what we cannot do---at least in the absence of further assumptions---is say that the average causal effect of smoking on cancer is simply the conditional $p(c|s)$, obtained from observational data, *i.e.* from the joint distribution $p(s,c)$ observed in the population of interest.  In the context of our example, there might be confounding factors that influence both relevant variables ($S$ and $C$, here) so that a smoker might be more likely to contract cancer for other reasons (genetic, cultural...). 
+By now, everyone knows that *correlation does not imply causation*. Therefore, what we cannot do--at least in the absence of further assumptions--is say that the average causal effect of smoking on cancer is simply the conditional $p(c|s)$, obtained from observational data, *i.e.* from the joint distribution $p(s,c)$ observed in the population of interest.  In the context of our example, there might be confounding factors that influence both relevant variables ($S$ and $C$, here) so that a smoker might be more likely to contract cancer for other reasons (genetic, cultural...). 
 
 ## RCTs: intervening on the cause
 
-So what can we say about $p(c|do(s))$ in the presence of confounders? To say anything meaningful, we need to make our assumptions clear about the causal structure we think produces the data we observe. We can summarise the previous discussion with the following causal structure---where we call $H$ the confounding variables collectively---expressed in graphical terms and as an equation between string diagrams:
+So what can we say about $p(c|do(s))$ in the presence of confounders? To say anything meaningful, we need to make our assumptions clear about the causal structure we think produces the data we observe. We can summarise the previous discussion with the following causal structure--where we call $H$ the confounding variables collectively--expressed in graphical terms and as an equation between string diagrams:
 @@center
 \figenv{/assets/img/rct-causal-model.png}{100%}
 @@
-(This way of translating causal networks (which are just directed acyclic graphs btw) to string diagrams in Markov categories was first proposed by Brendan Fong in his [masters' thesis](https://arxiv.org/abs/1301.6201).)
+(This way of translating causal networks--which are just directed acyclic graphs btw--to string diagrams in Markov categories was first proposed by Brendan Fong in his [masters' thesis](https://arxiv.org/abs/1301.6201).)
 
 **How is $p(c|do(s))$ even defined?** Brushing aside many philosophical issues, we define the average causal effect $p(y|do(x))$ as the probability of observing $Y=y$ if we intervene at $X$ to set it to the value $x$. In the absence of parallel universes, the standard way of computing this distribution is by running a *randomised controlled trial* (RCT) where we split the population into different subpopulations evenly and set $X$ to one possible value for each subpopulation, and observe the outcome of $Y$. Going back to our example, to measure the causal effect of smoking on cancer, we would thus need to gather a random group of people, select half randomly and force them to smoke for a few decades (while making sure the other half does not smoke). At the end of the trial, we can simply count how many in each group have contracted lung cancer to obtain $p(c|do(s))$ and $p(c|do(\lnot s))$.
 Diagrammatically, this amounts to severing the wire for $S$ and extending it to the bottom as on the left below (and discarding all top wires we no longer need):
@@ -56,7 +56,7 @@ The real world is often messy and we can rarely identify all confounding factors
 \figenv{/assets/img/front-door-model.png}{100%}
 @@
 Assuming the causal structure above, we can estimate the outcome of a RCT and compute the desired causal effect. Before showing how, we will need to assume a little more than the axioms of Markov categories. 
-- First, we need to assume that our categories admits *conditionals*---we can find the relevant diagrammatic translation in [the work of Tobias Fritz](https://arxiv.org/abs/1908.07021) for example:
+- First, we need to assume that our categories admits *conditionals*--we can find the relevant diagrammatic translation in [the work of Tobias Fritz](https://arxiv.org/abs/1908.07021) for example:
 @@center
 \figenv{/assets/img/conditionals.png}{50%}
 @@
@@ -68,14 +68,14 @@ Now we are ready to compute $p(c|do(s))$.
 @@center
 \figenv{/assets/img/front-door-adjustment.jpg}{100%}
 @@
-The formula we derive is commonly called the frontdoor adjustment formula:
+The formula we have rederived is commonly called the frontdoor adjustment formula:
 $$p(c|do(s)) = \sum_{s'}\sum_{t}p(c|t,s')p(s')p(t|s)$$
 
 One important point: we need the dependence of $T$ on $S$ to be *noisy*, that is, we want $p(t,s)$ to be positive for all $t$ and $s$. If, for example, $S=T$, then we could not compute the conditional $p(c|t,s)$ as values for which $T$ and $S$ differ have probability zero. In more conceptual terms, $T$ does not provide any additional information so we are back in the first scenario above, and would have to perform a randomised experiment to estimate $p(c|do(s))$.
 
 ## The do-calculus and further work
 
-How far can we push the ideas of this post? Could we give a fully diagrammatic and fully equational treatment of Pearl's *do-calculus*? In its original formulation, the do-calculus is given by three rules (in addition to the usual rules of probability theory) in the form of equations which can only be applied when the variables involved satisfy certain conditional independence conditions, read from particular dags (themselves derived from the assumed causal model). Therefore, if this is at all possible, one of the benefits of turning the do-calculus into equational reasoning over string diagrams, would be to dispense with the side-conditions and obtain a purely algebraic way of identifying causal effects. Since the conditional independence structure is baked into the diagrams, this is not an unreasonable hope. 
+How far can we push the ideas of this post? *Could we give a fully diagrammatic and fully equational treatment of Pearl's do-calculus*? In its original formulation, the do-calculus is given by three rules (in addition to the usual rules of probability theory) in the form of equations which can only be applied when the variables involved satisfy certain conditional independence conditions, read from particular dags (themselves derived from the assumed causal model). Therefore, if this is at all possible, one of the benefits of turning the do-calculus into equational reasoning over string diagrams, would be to dispense with the side-conditions and obtain a purely algebraic way of identifying causal effects. Since the conditional independence structure is baked into the diagrams, this is not an unreasonable hope. 
 
 In the epilogue of his book, *Causality*, Judea Pearl writes that "intervention amounts to a surgery on equations (guided by a diagram) and causation means predicting the consequences of such a surgery". We'd be aiming for a causal calculus that blends the usual two aspects of causal inference---graphs and equations---into a single diagrammatic formalism.
 
@@ -87,6 +87,6 @@ Inspired by our computations above, we could take as syntax the free Markov cate
 ## References
 - The structure of this post follows that of Marcus Lewis's [Some "causal inference" intuition](https://probablymarcus.com/blocks/2021/11/04/some-causal-inference-intuition.html). The title is not a misnomer---I found his post very helpful to build intuition about the frontdoor adjustment in particular.
 - As I have already mentioned, the idea of turning causal networks into string diagrams is due to Brendan Fong; more details can be found in his masters' thesis [Causal Theories: A Categorical Perspective on Bayesian Networks](https://arxiv.org/abs/1301.6201).
-- The first treatment of interventional probabilities as string diagrams is due to Bart Jacobs, Aleks Kissinger and my coauthor, Fabio Zanasi in their paper [Causal Inference by String Diagram Surgery](https://arxiv.org/abs/1811.08338). They treat the same example and give a diagrammatic criterion for causal identifiability. 
+- The first treatment of interventional probabilities as string diagrams is due to Bart Jacobs, Aleks Kissinger and my coauthor, Fabio Zanasi in their paper [Causal Inference by String Diagram Surgery](https://arxiv.org/abs/1811.08338). They treat the same example and give a criterion for causal identifiability in the diagrammatic representation of a given causal model. This is different from the equational approach I have followed here.
 - Tobias Fritz's work on the synthetic approach to probability theory in Markov categories is really inspiring. I've referred to the treatment of conditionals in [A synthetic approach to Markov kernels, conditional independence and theorems on sufficient statistics](https://arxiv.org/abs/1908.07021) in Section 11 (in particular Definition 11.5) here, but the whole paper is well worth reading!
 - Judea Pearl's textbook [*Causality*](https://en.wikipedia.org/wiki/Causality_(book)) seems to be the standard reference on causal inference; I have only read the epilogue, which is a leasurly introduction to the topic, and a shorter read than [*The Book of Why*](https://en.wikipedia.org/wiki/The_Book_of_Why).
