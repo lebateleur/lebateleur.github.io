@@ -64,7 +64,7 @@ Assuming the causal structure above, we can estimate the outcome of a RCT and co
 @@center
 \figenv{/assets/img/conditional-independence-examples.png}{75%}
 @@
-Now we are ready to compute $p(c|do(s))$. 
+Now we are ready to compute $p(c|do(s))$. The challenge is in obtaining quantities that do not involve any unobserved variable ($H$ here). Diagrammatically, we attempt to remove all boxes with a yellow wire. We can do so as follows, using the axioms we have so far:
 @@center
 \figenv{/assets/img/front-door-adjustment.jpg}{100%}
 @@
