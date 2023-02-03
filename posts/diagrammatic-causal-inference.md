@@ -70,6 +70,7 @@ Now we are ready to compute $p(c|do(s))$. The challenge is in obtaining quantiti
 @@
 The formula we have rederived is commonly called the frontdoor adjustment formula:
 $$p(c|do(s)) = \sum_{s'}\sum_{t}p(c|t,s')p(s')p(t|s)$$
+[*Added on 03/02/23: after reading Chapter 3 of Judea Pearl's Causality textbook, I have realised that the author gives the same derivation or, rather, that the derivation above is a diagrammatic translation of the one he gave. This makes sense, as we're not using any do-calculus, but only basic axioms of conditional probability and independence assumptions.*]
 
 One important point: we need the dependence of $T$ on $S$ to be *noisy*, that is, we want $p(t,s)$ to be positive for all $t$ and $s$. If, for example, $S=T$, then we could not compute the conditional $p(c|t,s)$ as values for which $T$ and $S$ differ have probability zero. In more conceptual terms, $T$ does not provide any additional information so we are back in the first scenario above, and would have to perform a randomised experiment to estimate $p(c|do(s))$.
 
