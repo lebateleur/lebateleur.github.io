@@ -1,6 +1,7 @@
 @def title = "An introduction to causal inference via string diagrams"
 @def published = "Jan. 2023" 
 @def rss = "An introduction to causal inference via string diagrams"
+@def date = "2023/01"
 
 # Basic causal inference via string diagrams
 

@@ -1,7 +1,7 @@
 @def title = "The algebra of boolean satisfiability"
 @def published = "Mar. 2022" 
 @def rss = "The algebra of boolean satisfiability"
-
+@def date = "2022/03"
 
 
 # The algebra of boolean satisfiability

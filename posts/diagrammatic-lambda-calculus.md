@@ -1,6 +1,7 @@
 @def title = "String diagrams for the lambda-calculus?"
 @def published = "Oct. 2021" 
 @def rss = "A string-diagrammatic interpretation of the lambda-calculus"
+@def date = "2021/10"
 
 # String diagrams for the $\lambda$-calculus?
 

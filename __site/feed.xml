@@ -23,6 +23,25 @@
 
 <item>
   <title>
+    <![CDATA[  Diagrammatic causal inference continued: the new napkin problem  ]]>
+  </title>
+  <link> https://piedeleu.com/posts/diagrammatic-causal-inference-2-napkin-problem/index.html </link>
+  <guid> https://piedeleu.com/posts/diagrammatic-causal-inference-2-napkin-problem/index.html </guid>
+  <description>
+    <![CDATA[  Diagrammatic causal inference continued: the new napkin problem  ]]>
+  </description>  
+    
+  <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Robin Piedeleu</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
     <![CDATA[  An introduction to causal inference via string diagrams  ]]>
   </title>
   <link> https://piedeleu.com/posts/diagrammatic-causal-inference/index.html </link>
@@ -31,7 +50,7 @@
     <![CDATA[  An introduction to causal inference via string diagrams  ]]>
   </description>  
     
-  <pubDate>Fri, 03 Feb 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -50,7 +69,7 @@
     <![CDATA[  The algebra of boolean satisfiability  ]]>
   </description>  
     
-  <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -69,7 +88,7 @@
     <![CDATA[  A string-diagrammatic interpretation of the lambda-calculus  ]]>
   </description>  
     
-  <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>  
+  <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>

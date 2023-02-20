@@ -19,9 +19,9 @@ end
 function hfun_blogposts()
     list = readdir("posts")
     filter!(f -> endswith(f, ".md"), list)
-    dates = [stat(joinpath("blog", f)).mtime for f in list]
-    perm = sortperm(dates, rev=true)
-    idxs = perm[1:min(3, length(perm))]
+    dates = [stat(joinpath("posts", f)).mtime for f in list]
+    perm = sortperm(dates)
+    idxs = perm[1:min(3, length(perm))+1]
     io = IOBuffer()
     write(io, "<ul>")
     for (i, post) in enumerate(list[idxs])
