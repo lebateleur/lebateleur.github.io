@@ -9,7 +9,7 @@ This post is a follow-up to [Basic causal inference via string diagrams](/posts/
 
 In *The Book of Why*, Judea Pearl gives an example of a causal effect that cannot be identified using either the frontdoor or the backdoor criteria, but requires the do-calculus to estimate. The problem is called the *new napkin problem*, in reference to an earlier problem that Pearl had solved on a napkin using the do-calculus. 
 
-The effect to estimate is $p(y|do(x))$ in the following causal model, which I draw below as a dag and as a string diagram, following the translation explained in the previous post:
+The effect to estimate is $p(y|do(x))$ in the following causal model, which I draw below as a dag and as a string diagram, following the translation explained in [the previous post](/posts/diagrammatic-causal-inference/):
 
 @@center
 \figenv{/assets/img/causality/napkin-problem-model.png}{70%}
@@ -41,10 +41,9 @@ To identify $p(c|do(t))$, we need to rewrite this diagram in a form that does no
 
 @@center
 \figenv{/assets/img/causality/backdoor-formula-derivation.png}{80%}
-@@
-The intuition is that $S$ blocks all confounding paths between $T$ and $C$. 
+@@ 
 
-In probabilistic notation, we have shown that $p(c|do(t)) = \displaystyle\sum_s p(c|t,s)p(s)$ a formula we call (B).
+In probabilistic notation, we have shown that $p(c|do(t)) = \displaystyle\sum_s p(c|t,s)p(s)$--a formula that we call (B).
 
 
 
@@ -74,7 +73,7 @@ Thus, it is not difficult to see that interventions at $Z$ in the *new napkin pr
 
 Why is this formula useful? We want to deduce what would happen if we intervened at $X$ and observed $Y$, from what would happen if we intervened at $Z$ and observed $X$ and $Y$, because interventions at $Z$ are easy to compute. 
 
-First, notice that if intervene at $Z$ then all confounders--the common causes $U_1$ and $U_2$--for the causal effect of $X$ on $Y$ are blocked. This explains why intervening at $Z$ is helpful: given that we intervene at $Z$ (and therefore block all confounders for the causal effect of $X$ on $Y$), the causal effect of $X$ on $Y$ can be estimated from observational data. In other words, we claim that intervening at $Z$ and $X$ and observing $Y$ is the same thing as intervening at $Z$ and observing $Y$, conditional on $X$. In do-notation, $p(y|do(x),do(z))=p(y|x,do(z))$. And the latter can be estimated from $p(y,x|do(z))$, which we already have as $(B)$.
+First, notice that if we intervene at $Z$ then all confounders--the common causes $U_1$ and $U_2$--for the causal effect of $X$ on $Y$ are blocked. This explains why intervening at $Z$ is helpful: given that we intervene at $Z$ (and therefore block all confounders for the causal effect of $X$ on $Y$), the causal effect of $X$ on $Y$ can be estimated from observational data. In other words, we claim that intervening at $Z$ and $X$ and observing $Y$ is the same thing as intervening at $Z$ and observing $Y$, conditional on $X$. In do-notation, $p(y|do(x),do(z))=p(y|x,do(z))$. And the latter can be estimated from $p(y,x|do(z))$, which we already have as $(B)$.
 
 Another way to get to same intuition is to notice that if we take the diagram for $p(y|do(x))$ and compose it with $p(x|do(z))$, we get that of $p(y,x|do(z))$. This suggests the following derivation:
 
@@ -90,3 +89,5 @@ There we have it: a probabilistic solution of Pearl's *new napkin problem*.
 ## What next?
 
 There is more to causal inference than causal identifiability. As I have been meaning to keep climbing Pearl's ladder of causation, I might cover counterfactuals in a subsequent blog post. As far as I know, anyone has yet to write about counterfactuals from the diagrammatic point of view. Stay tuned. 
+
+**EDIT (27/05/23).** Robin Lorenz and Sean Tull just released [an arXiv preprint](https://arxiv.org/abs/2304.07638) on causal inference with string diagrams, including a treatment of identifiability,  counterfactuals and much more... Go check it out!  
