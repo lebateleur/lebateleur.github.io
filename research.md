@@ -10,7 +10,18 @@ rss = "Robin Piedeleu's research (preprints and publications)"
 
 \toc
 
+## Preprints
 
+**Graphical Quadratic Algebra** with [Dario Stein](https://dario-stein.de/), [Fabio Zanasi](https://www.zanasi.com/fabio/), and Richard Samuelson, 2024 -- [ArXiv](https://arxiv.org/abs/2403.02284)
+
+
+We introduce Graphical Quadratic Algebra (GQA), a string diagrammatic calculus extending the language of Graphical Affine Algebra with a new generator characterised by invariance under rotation matrices. We show that GQA is a sound and complete axiomatisation for three different models: quadratic relations, which are a compositional formalism for least-squares problems, Gaussian stochastic processes, and Gaussian stochastic processes extended with non-determinisms. The equational theory of GQA sheds light on the connections between these perspectives, giving an algebraic interpretation to the interplay of stochastic behaviour, relational behaviour, non-determinism, and conditioning. As applications, we discuss various case studies, including linear regression, probabilistic programming, and electrical circuits with realistic (noisy) components. 
+
+
+**An Introduction to String Diagrams for Computer Scientists**, with Fabio Zanasi -- [ArxiV](https://arxiv.org/abs/2305.08768)
+
+This document is an elementary introduction to string diagrams. It takes a computer science perspective: rather than using category theory as a starting point, we build on intuitions from formal language theory, treating string diagrams as a syntax with its semantics. After the basic theory, pointers are provided to contemporary applications of string diagrams in various fields of science.
+    
 ## Conference papers
 
 **A Complete Diagrammatic Calculus for Boolean Satisfiability**
@@ -19,7 +30,7 @@ with Tao Gu and [Fabio Zanasi](https://www.zanasi.com/fabio/), MFPS '22 -- [ArXi
 We propose a diagrammatic calculus to reason about satisfiability of Boolean formulas, and prove it to be sound and complete. We then showcase our calculus in a few case studies. First, we consider the relationship of our calculus with resolution proof systems and modern SAT-solving heuristics. Second, we consider Horn clauses, which leads us to a new decision method for propositional logic programs equivalence under Herbrand model semantics.
 
 **Graphical Piecewise-Linear Algebra**,
-with [Guillaume Boisseau](https://www.cs.ox.ac.uk/people/guillaume.boisseau/), FoSSaCS'22 -- [ArXiv Preprint](https://arxiv.org/abs/2111.03956)
+with [Guillaume Boisseau](https://www.cs.ox.ac.uk/people/guillaume.boisseau/), FoSSaCS'22 -- [ArXiv](https://arxiv.org/abs/2111.03956)
 
 Graphical (Linear) Algebra is a family of diagrammatic languages allowing to reason about different kinds of subsets of vector spaces compositionally. It has been used to model various application domains,
 from signal-flow graphs to Petri nets and electrical circuits. In this paper,
@@ -31,7 +42,7 @@ Finally, we showcase its use by modelling the behaviour of stateless electronic 
 remit of previous diagrammatic languages.
 
 **A String Diagrammatic Axiomatisation of Finite-State Automata**,
-with [Fabio Zanasi](https://www.zanasi.com/fabio/), FoSSaCS '21 -- [ArXiv preprint](https://arxiv.org/abs/2009.14576), [DOI](https://doi.org/10.1007/978-3-030-71995-1_24)
+with [Fabio Zanasi](https://www.zanasi.com/fabio/), FoSSaCS '21 -- [ArXiv](https://arxiv.org/abs/2009.14576), [DOI](https://doi.org/10.1007/978-3-030-71995-1_24)
 
 We develop a fully diagrammatic approach to the theory of finite-state automata, based on reinterpreting their usual state-transition graphical representation as a two-dimensional syntax of string diagrams. Moreover, we provide an equational theory that completely axiomatises language equivalence in this new setting. The proposed axiomatisation is finitary -- a result which is provably impossible to obtain for the one-dimensional syntax of regular expressions.
 
@@ -39,13 +50,13 @@ We develop a fully diagrammatic approach to the theory of finite-state automata,
 **ERRATUM.**  Unfortunately, this paper contains a mistake in the completeness proof. The implementation of determinisation via equational reasoning does not work as expected in full generality. As a result, we cannot claim completeness of the proposed equational theory. However, it is sill possible to obtain a finite axiomatisation via another route: we have devised an extended syntax equipped with a finite equational theory that is sufficient to prove language equivalence for all diagrams corresponding to automata (*i.e.* completeness for the fragment of interest). This axiomatisation has been accepted for publication in LMCS (see [Journal articles](#journal_papers) below) and can be found on the [ArXiv](https://arxiv.org/abs/2211.16484).
 
 **Contextual Equivalence for Signal Flow Graphs**,
-with [Filippo Bonchi](https://scholar.google.com/citations?user=RMy4gDsAAAAJ&hl=en), [Paweł Sobociński](https://www.ioc.ee/~pawel/) and [Fabio Zanasi](https://www.zanasi.com/fabio/),  FOSSACS '20 -- [ArXiv preprint](https://arxiv.org/abs/2002.08874), [DOI](https://doi.org/10.1007/978-3-030-45231-5_5)
+with [Filippo Bonchi](https://scholar.google.com/citations?user=RMy4gDsAAAAJ&hl=en), [Paweł Sobociński](https://www.ioc.ee/~pawel/) and [Fabio Zanasi](https://www.zanasi.com/fabio/),  FOSSACS '20 -- [ArXiv](https://arxiv.org/abs/2002.08874), [DOI](https://doi.org/10.1007/978-3-030-45231-5_5)
 
 We extend the signal flow calculus---a compositional account of the classical signal flow graph model of computation---to encompass affine behaviour, and furnish it with a novel operational semantics. The increased expressive power allows us to define a canonical notion of contextual equivalence, which we show to coincide with denotational equality. Finally, we characterise the realisable fragment of the calculus: those terms that express the computations of (affine) signal flow graphs.
 
 
 **Bialgebraic Semantics for String Diagrams**,
-with [Filippo Bonchi](https://scholar.google.com/citations?user=RMy4gDsAAAAJ&hl=en), [Paweł Sobociński](https://www.ioc.ee/~pawel/) and [Fabio Zanasi](https://www.zanasi.com/fabio/),  CONCUR '19 -- [ArXiv preprint](https://arxiv.org/abs/1906.01519), [DOI]()
+with [Filippo Bonchi](https://scholar.google.com/citations?user=RMy4gDsAAAAJ&hl=en), [Paweł Sobociński](https://www.ioc.ee/~pawel/) and [Fabio Zanasi](https://www.zanasi.com/fabio/),  CONCUR '19 -- [ArXiv](https://arxiv.org/abs/1906.01519), [DOI]()
 
 Turi and Plotkin's bialgebraic semantics is an abstract approach to specifying the operational semantics of a system, by means of a distributive law between its syntax (encoded as a monad) and its dynamics (an endofunctor). This setup is instrumental in showing that a semantic specification (a coalgebra) satisfies desirable properties: in particular, that it is compositional. In this work, we use the bialgebraic approach to derive well-behaved structural operational semantics of string diagrams, a graphical syntax that is increasingly used in the study of interacting systems across different disciplines. Our analysis relies on representing the two-dimensional operations underlying string diagrams in various categories as a monad, and their bialgebraic semantics in terms of a distributive law for that monad. 
 
