@@ -12,17 +12,34 @@ rss = "Robin Piedeleu's research (preprints and publications)"
 
 ## Preprints
 
+**The Algebra of Parity Games** -- [ArXiv](https://arxiv.org/abs/2501.18499)
+ 
+In recent work, Watanabe, Eberhart, Asada, and Hasuo have shown that parity games can be seen as string diagrams, that is, as the morphisms of a symmetric monoidal category, an algebraic structure with two different operations of composition. Furthermore, they have shown that the winning regions associated to a given game can be computed functorially, i.e. compositionally. Building on their results, this paper focuses on the equational properties of parity games, giving them a sound and complete axiomatisation. The payoff is that any parity game can be solved using equational reasoning directly at the level of the string diagram that represents it. Finally, we translate the diagrammatic language of parity games to an equally expressive symbolic calculus with fixpoints, and equip it with its own equational theory. 
+
 **Graphical Quadratic Algebra** with [Dario Stein](https://dario-stein.de/), [Fabio Zanasi](https://www.zanasi.com/fabio/), and Richard Samuelson, 2024 -- [ArXiv](https://arxiv.org/abs/2403.02284)
 
 
 We introduce Graphical Quadratic Algebra (GQA), a string diagrammatic calculus extending the language of Graphical Affine Algebra with a new generator characterised by invariance under rotation matrices. We show that GQA is a sound and complete axiomatisation for three different models: quadratic relations, which are a compositional formalism for least-squares problems, Gaussian stochastic processes, and Gaussian stochastic processes extended with non-determinisms. The equational theory of GQA sheds light on the connections between these perspectives, giving an algebraic interpretation to the interplay of stochastic behaviour, relational behaviour, non-determinism, and conditioning. As applications, we discuss various case studies, including linear regression, probabilistic programming, and electrical circuits with realistic (noisy) components. 
 
 
-**An Introduction to String Diagrams for Computer Scientists**, with Fabio Zanasi -- [ArxiV](https://arxiv.org/abs/2305.08768)
+**An Introduction to String Diagrams for Computer Scientists**, with Fabio Zanasi -- Accepted for publication by CUP, [Arxiv](https://arxiv.org/abs/2305.08768)
 
 This document is an elementary introduction to string diagrams. It takes a computer science perspective: rather than using category theory as a starting point, we build on intuitions from formal language theory, treating string diagrams as a syntax with its semantics. After the basic theory, pointers are provided to contemporary applications of string diagrams in various fields of science.
     
 ## Conference papers
+
+**A Complete Axiomatisation of Equivalence for Discrete Probabilistic Programming** with Mateo Torres-Ruiz, [Alexandra Silva](https://alexandrasilva.org), and [Fabio Zanasi](https://www.zanasi.com/fabio/), ESOP '25-- [ArXiv](https://arxiv.org/abs/2408.14701)
+
+We introduce a sound and complete equational theory capturing equivalence of discrete probabilistic programs, that is, programs extended with primitives for Bernoulli distributions and conditioning, to model distributions over finite sets of events. To do so, we translate these programs into a graphical syntax of probabilistic circuits, formalised as string diagrams, the two-dimensional syntax of symmetric monoidal categories. We then prove a first completeness result for the equational theory of the conditioning-free fragment of our syntax. Finally, we extend this result to a complete equational theory for the entire language. Note these developments are also of interest for the development of probability theory in Markov categories: our first result gives a presentation by generators and equations of the category of Markov kernels, restricted to objects that are powers of the two-elements set. 
+
+**A Complete Diagrammatic Calculus for Automata Simulation** with Thibaut Antoine, [Alexandra Silva](https://alexandrasilva.org), and [Fabio Zanasi](https://www.zanasi.com/fabio/), CSL '25 -- [DOI](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.CSL.2025.27)
+
+We give a sound and complete (in)equational theory for simulation of finite state automata. Our approach uses a string diagrammatic calculus to represent automata and a functorial semantics to capture simulation in a compositional way. Interestingly, in contrast to other approaches based on regular expressions, fixpoints are a derived notion in our calculus and the resulting axiomatisation is finitary.
+
+**On Iteration in Discrete Probabilistic Programming** with Mateo Torres-Ruiz, [Alexandra Silva](https://alexandrasilva.org), and [Fabio Zanasi](https://www.zanasi.com/fabio/), FSCD '24 -- [DOI](https://doi.org/10.4230/LIPIcs.FSCD.2024.20)
+
+Discrete probabilistic programming languages provide an expressive tool for representing and reasoning about probabilistic models. These languages typically define the semantics of a program through its posterior distribution, obtained through exact inference techniques.
+While the semantics of standard programming constructs in this context is well understood, there is a gap in extending these languages with tools to reason about the asymptotic behaviour of programs. In this paper, we introduce unbounded iteration in the context of a discrete probabilistic programming language, give it a semantics, and show how to compute it exactly. This allows us to express the stationary distribution of a probabilistic function while preserving the efficiency of exact inference techniques. We discuss the advantages and limitations of our approach, showcasing their practical utility by considering examples where bounded iteration poses a challenge due to the inherent difficulty of assessing the proximity of a distribution to its stationary point.
 
 **A Complete Diagrammatic Calculus for Boolean Satisfiability**
 with Tao Gu and [Fabio Zanasi](https://www.zanasi.com/fabio/), MFPS '22 -- [ArXiv](https://arxiv.org/abs/2211.12629)
@@ -72,8 +89,12 @@ We introduce the resource calculus, a string diagrammatic language for concurren
 
 ## Journal papers
 
+**Rewriting for Symmetric Monoidal Categories with Commutative (Co)Monoid Structure** with Aleksandar Milosavljevic, and [Fabio Zanasi](https://www.zanasi.com/fabio/), LMCS -- [DOI](https://doi.org/10.46298/lmcs-21(1:12)2025), [ArXiv](https://arxiv.org/abs/2204.04274)
+
+String diagrams are pictorial representations for morphisms of symmetric monoidal categories. They constitute an intuitive and expressive graphical syntax, which has found application in a very diverse range of fields including concurrency theory, quantum computing, control theory, machine learning, linguistics, and digital circuits. Rewriting theory for string diagrams relies on a combinatorial interpretation as double-pushout rewriting of certain hypergraphs. As previously studied, there is a 'tension' in this interpretation: in order to make it sound and complete, we either need to add structure on string diagrams (in particular, Frobenius algebra structure) or pose restrictions on double-pushout rewriting (resulting in 'convex' rewriting). From the string diagram viewpoint, imposing a full Frobenius structure may not always be natural or desirable in applications, which motivates our study of a weaker requirement: commutative monoid structure. In this work we characterise string diagram rewriting modulo commutative monoid equations, via a sound and complete interpretation in a suitable notion of double-pushout rewriting of hypergraphs. 
+
 **A Finite Axiomatisation of Automata using String Diagrams**,
-with [Fabio Zanasi](https://www.zanasi.com/fabio/), accepted for publication to LMCS (Special Issue) -- [ArXiv](https://arxiv.org/abs/2211.16484)
+with [Fabio Zanasi](https://www.zanasi.com/fabio/), LMCS (Special Issue) -- [ArXiv](https://arxiv.org/abs/2211.16484)
 
 We develop a fully diagrammatic approach to finite-state automata, based on reinterpreting their usual state-transition graphical representation as a two-dimensional
 syntax of string diagrams. In this setting, we are able to provide a complete equational theory for language equivalence, with two notable features. First, the proposed axiomatisation is finite. Second, the Kleene star is a derived concept, as it can be decomposed into more primitive algebraic blocks.
