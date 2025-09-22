@@ -11,7 +11,7 @@ Prior to joining UCL, I obtained my PhD from the University of Oxford under the 
 You can write to me at `initial_of_my_first_name.last_name@ucl.ac.uk`
 
 # News
-* August 25: [Graphical Quadratic Algebra](https://arxiv.org/abs/2403.02284) was accepted at [ICTAC](https://ictac2025.digital-hub.sh/).
+* August 2025: [Graphical Quadratic Algebra](https://arxiv.org/abs/2403.02284) (with Dario Stein, Fabio Zanasi and Richard Samuelson) was accepted at [ICTAC'25](https://ictac2025.digital-hub.sh/).
 * May 2025 [An Introduction to String Diagrams for Computer Scientists](https://doi.org/10.1017/9781009625715) (with Fabio Zanasi) is now published by Cambridge University Press, in the Elements in Applied Category Theory series.
 * April 2025: Mina Abbaszadeh and I organised [SYCO 13](https://www.cl.cam.ac.uk/events/syco/13/) at UCL. 
 * February 2025: I gave a talk on probabilistic Boolean circuits in Tallinn, at the [Computing with Markov Categories Workshop](https://www.ioc.ee/~pawel/computingWithMarkov.html) ([slides](https://piedeleu.com/slides/tallinn-workshop-26-2-25.pdf)).
