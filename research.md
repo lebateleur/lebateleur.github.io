@@ -16,19 +16,17 @@ rss = "Robin Piedeleu's research (preprints and publications)"
  
 In recent work, Watanabe, Eberhart, Asada, and Hasuo have shown that parity games can be seen as string diagrams, that is, as the morphisms of a symmetric monoidal category, an algebraic structure with two different operations of composition. Furthermore, they have shown that the winning regions associated to a given game can be computed functorially, i.e. compositionally. Building on their results, this paper focuses on the equational properties of parity games, giving them a sound and complete axiomatisation. The payoff is that any parity game can be solved using equational reasoning directly at the level of the string diagram that represents it. Finally, we translate the diagrammatic language of parity games to an equally expressive symbolic calculus with fixpoints, and equip it with its own equational theory. 
 
-**Graphical Quadratic Algebra** with [Dario Stein](https://dario-stein.de/), [Fabio Zanasi](https://www.zanasi.com/fabio/), and Richard Samuelson, 2024 -- [ArXiv](https://arxiv.org/abs/2403.02284)
+    
+## Conference papers
+
+
+**Graphical Quadratic Algebra** with [Dario Stein](https://dario-stein.de/), [Fabio Zanasi](https://www.zanasi.com/fabio/), and Richard Samuelson, ICTAC 2025 (_Best Paper Award_) -- [ArXiv](https://arxiv.org/abs/2403.02284) 
 
 
 We introduce Graphical Quadratic Algebra (GQA), a string diagrammatic calculus extending the language of Graphical Affine Algebra with a new generator characterised by invariance under rotation matrices. We show that GQA is a sound and complete axiomatisation for three different models: quadratic relations, which are a compositional formalism for least-squares problems, Gaussian stochastic processes, and Gaussian stochastic processes extended with non-determinisms. The equational theory of GQA sheds light on the connections between these perspectives, giving an algebraic interpretation to the interplay of stochastic behaviour, relational behaviour, non-determinism, and conditioning. As applications, we discuss various case studies, including linear regression, probabilistic programming, and electrical circuits with realistic (noisy) components. 
 
 
-**An Introduction to String Diagrams for Computer Scientists**, with Fabio Zanasi -- Accepted for publication by CUP, [Arxiv](https://arxiv.org/abs/2305.08768)
-
-This document is an elementary introduction to string diagrams. It takes a computer science perspective: rather than using category theory as a starting point, we build on intuitions from formal language theory, treating string diagrams as a syntax with its semantics. After the basic theory, pointers are provided to contemporary applications of string diagrams in various fields of science.
-    
-## Conference papers
-
-**A Complete Axiomatisation of Equivalence for Discrete Probabilistic Programming** with Mateo Torres-Ruiz, [Alexandra Silva](https://alexandrasilva.org), and [Fabio Zanasi](https://www.zanasi.com/fabio/), ESOP '25-- [ArXiv](https://arxiv.org/abs/2408.14701)
+**A Complete Axiomatisation of Equivalence for Discrete Probabilistic Programming** with Mateo Torres-Ruiz, [Alexandra Silva](https://alexandrasilva.org), and [Fabio Zanasi](https://www.zanasi.com/fabio/), ESOP '25 -- [ArXiv](https://arxiv.org/abs/2408.14701)
 
 We introduce a sound and complete equational theory capturing equivalence of discrete probabilistic programs, that is, programs extended with primitives for Bernoulli distributions and conditioning, to model distributions over finite sets of events. To do so, we translate these programs into a graphical syntax of probabilistic circuits, formalised as string diagrams, the two-dimensional syntax of symmetric monoidal categories. We then prove a first completeness result for the equational theory of the conditioning-free fragment of our syntax. Finally, we extend this result to a complete equational theory for the entire language. Note these developments are also of interest for the development of probability theory in Markov categories: our first result gives a presentation by generators and equations of the category of Markov kernels, restricted to objects that are powers of the two-elements set. 
 
@@ -107,7 +105,11 @@ with [Filippo Bonchi](https://scholar.google.com/citations?user=RMy4gDsAAAAJ&hl=
 
 This is the journal version of [our CONCUR '19 paper](#bialgebraic_semantics_for_string_diagrams).
 
+## Book
 
+**_An Introduction to String Diagrams for Computer Scientists_**, with Fabio Zanasi -- Cambridge University Press (Elements in Applied Category Theory series), [Arxiv](https://arxiv.org/abs/2305.08768)
+
+This document is an elementary introduction to string diagrams. It takes a computer science perspective: rather than using category theory as a starting point, we build on intuitions from formal language theory, treating string diagrams as a syntax with its semantics. After the basic theory, pointers are provided to contemporary applications of string diagrams in various fields of science.
 
 ## Theses
 
